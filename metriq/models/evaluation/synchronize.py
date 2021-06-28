@@ -4,7 +4,7 @@ from pydantic import Field
 
 from tea_client.models import TeaClientModel
 
-from paperswithcode.models.evaluation.result import _ResultRequest
+from metriq.models.evaluation.result import _ResultRequest
 
 
 class ResultSyncRequest(_ResultRequest):

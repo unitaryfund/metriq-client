@@ -2,7 +2,7 @@ from typing import List, Optional
 
 from tea_client.models import TeaClientModel
 
-from paperswithcode.models.page import Page
+from metriq.models.page import Page
 
 
 class EvaluationTable(TeaClientModel):

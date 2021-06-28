@@ -17,23 +17,23 @@ __all__ = [
     "EvaluationTableSyncResponse",
 ]
 
-from paperswithcode.models.evaluation.metric import (
+from metriq.models.evaluation.metric import (
     Metric,
     MetricCreateRequest,
     MetricUpdateRequest,
 )
-from paperswithcode.models.evaluation.result import (
+from metriq.models.evaluation.result import (
     Result,
     ResultCreateRequest,
     ResultUpdateRequest,
 )
-from paperswithcode.models.evaluation.table import (
+from metriq.models.evaluation.table import (
     EvaluationTable,
     EvaluationTables,
     EvaluationTableCreateRequest,
     EvaluationTableUpdateRequest,
 )
-from paperswithcode.models.evaluation.synchronize import (
+from metriq.models.evaluation.synchronize import (
     ResultSyncRequest,
     MetricSyncRequest,
     EvaluationTableSyncRequest,
