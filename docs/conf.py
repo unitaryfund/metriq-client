@@ -23,8 +23,8 @@ from metriq.version import __version__
 # -- Project information -----------------------------------------------------
 
 project = "Metriq Client"
-copyright = "2021, UnitaryFund"
-author = "Daniel Strano <dan@unitary.fund>, Vincent Russo <vincent@unitary.fund>"
+copyright = "2020, Viktor Kerkez <alefnula@gmail.com>, 2021 UnitaryFund <info@unitary.fund>"
+author = "Viktor Kerkez <alefnula@gmail.com>, Daniel Strano <dan@unitary.fund>, Vincent Russo <vincent@unitary.fund>"
 
 # The full version, including alpha/beta/rc tags
 version = __version__

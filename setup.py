@@ -3,8 +3,8 @@ from setuptools import setup, find_packages
 from metriq import __version__
 
 name = "metriq-client"
-author = "UnitaryFund"
-author_email = "dan@unitary.fund, vincent@unitary.fund"
+author = "Viktor Kerkez, UnitaryFund"
+author_email = "alefnula@gmail.com, dan@unitary.fund, vincent@unitary.fund"
 url = "https://github.com/unitaryfund/metriq-client"
 
 
