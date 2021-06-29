@@ -1,13 +1,12 @@
 from urllib import parse
-from datetime import datetime
 from typing import Dict, List, Optional
 
 
 from tea_client.http import HttpClient
 from tea_client.handler import handler
 
-from paperswithcode.config import config
-from paperswithcode.models import (
+from metriq.config import config
+from metriq.models import (
     Paper,
     Papers,
     Repository,
@@ -42,13 +41,13 @@ from paperswithcode.models import (
 )
 
 
-class PapersWithCodeClient:
-    """PapersWithCode client."""
+class MetriqClient:
+    """Metriq client."""
 
     def __init__(self, token=None, url=None):
         url = url or config.server_url
         self.http = HttpClient(
-            url=f"{url}/api/v{config.api_version}",
+            url=f"{url}/api/",
             token=token or "",
             authorization_method=HttpClient.Authorization.token,
         )
@@ -93,6 +92,11 @@ class PapersWithCodeClient:
     @staticmethod
     def __create_result_sync_data(data: dict) -> dict:
         return data
+
+    @handler
+    def hello(self):
+        print(self.http.url)
+        return self.http.get("/")
 
     @handler
     def paper_list(

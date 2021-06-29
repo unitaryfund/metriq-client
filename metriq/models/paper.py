@@ -3,7 +3,7 @@ from typing import Optional, List
 
 from tea_client.models import TeaClientModel
 
-from paperswithcode.models.page import Page
+from metriq.models.page import Page
 
 
 class Paper(TeaClientModel):

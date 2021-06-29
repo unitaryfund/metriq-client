@@ -18,13 +18,13 @@ class Config(TeaConsoleConfig, TeaClientConfig):
     def __init__(self):
         # Path to the configuration file
         self.config_dir = (
-            Path("~").expanduser() / ".paperswithcode"
+            Path("~").expanduser() / ".metriq"
         ).absolute()
         TeaClientConfig.__init__(
-            self, server_url="https://paperswithcode.com", api_version=1
+            self, server_url="http://localhost:8080", api_version=1
         )
         TeaConsoleConfig.__init__(
-            self, config_file=self.config_dir / "paperswithcode.ini"
+            self, config_file=self.config_dir / "metriq.ini"
         )
 
 

@@ -38,16 +38,16 @@ __all__ = [
     "EvaluationTableSyncResponse",
 ]
 
-from paperswithcode.models.page import Page
-from paperswithcode.models.paper import Paper, Papers
-from paperswithcode.models.repository import Repository, Repositories
-from paperswithcode.models.conference import (
+from metriq.models.page import Page
+from metriq.models.paper import Paper, Papers
+from metriq.models.repository import Repository, Repositories
+from metriq.models.conference import (
     Conference,
     Conferences,
     Proceeding,
     Proceedings,
 )
-from paperswithcode.models.task import (
+from metriq.models.task import (
     Area,
     Areas,
     Task,
@@ -55,14 +55,14 @@ from paperswithcode.models.task import (
     TaskUpdateRequest,
     Tasks,
 )
-from paperswithcode.models.dataset import (
+from metriq.models.dataset import (
     Dataset,
     DatasetCreateRequest,
     DatasetUpdateRequest,
     Datasets,
 )
-from paperswithcode.models.method import Method, Methods
-from paperswithcode.models.evaluation import (
+from metriq.models.method import Method, Methods
+from metriq.models.evaluation import (
     EvaluationTable,
     EvaluationTables,
     EvaluationTableCreateRequest,
