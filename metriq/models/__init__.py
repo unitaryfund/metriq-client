@@ -1,4 +1,6 @@
 __all__ = [
+    "Submission",
+    "SubmissionCreateRequest",
     "Page",
     "Paper",
     "Papers",
@@ -38,6 +40,10 @@ __all__ = [
     "EvaluationTableSyncResponse",
 ]
 
+from metriq.models.submission import (
+    Submission,
+    SubmissionCreateRequest
+)
 from metriq.models.page import Page
 from metriq.models.paper import Paper, Papers
 from metriq.models.repository import Repository, Repositories

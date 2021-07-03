@@ -7,6 +7,8 @@ from tea_client.handler import handler
 
 from metriq.config import config
 from metriq.models import (
+    Submission,
+    SubmissionCreateRequest,
     Paper,
     Papers,
     Repository,
@@ -52,6 +54,50 @@ class MetriqClient:
             authorization_method=HttpClient.Authorization.token,
         )
 
+    @handler
+    def hello(self):
+        print(self.http.url)
+        return self.http.get("/")
+
+    @handler
+    def submission_get(self, submission_id: str) -> Submission:
+        """Return a submission by it's ID.
+
+        Args:
+            submission_id (str): ID of the submission.
+
+        Returns:
+            Submission: Submission object.
+        """
+        return Submission(**self.http.get(f"/submission/{submission_id}/")["data"])
+
+    @handler
+    def submission_delete(self, submission_id: str):
+        """Delete a submission.
+
+        Args:
+            submission_id (str): ID of the task.
+        """
+        return self.http.delete(f"/submission/{submission_id}/")
+
+    @handler
+    def submission_add(self, submission: SubmissionCreateRequest) -> Submission:
+        """Add a submission.
+
+        Args:
+            submission (SubmissionCreateRequest): Submission create request.
+
+        Returns:
+            Submission: Created submission.
+        """
+        return Submission(**self.http.post("/submission/", data=submission)["data"])
+
+    @handler
+    def submission_upvote(self, submission_id: str):
+        """"""
+        # TeaClient does not offer a `put` method (only post or patch).
+        #return self.http.patch(f"/submission/{submission_id}/upvote", data=None)
+
     @staticmethod
     def __params(page: int, items_per_page: int, **kwargs) -> Dict[str, str]:
         params = {key: str(value) for key, value in kwargs.items()}
@@ -92,11 +138,6 @@ class MetriqClient:
     @staticmethod
     def __create_result_sync_data(data: dict) -> dict:
         return data
-
-    @handler
-    def hello(self):
-        print(self.http.url)
-        return self.http.get("/")
 
     @handler
     def paper_list(
