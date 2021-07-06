@@ -94,9 +94,20 @@ class MetriqClient:
 
     @handler
     def submission_upvote(self, submission_id: str):
-        """"""
-        # TeaClient does not offer a `put` method (only post or patch).
-        #return self.http.patch(f"/submission/{submission_id}/upvote", data=None)
+        """Up-vote a submission.
+
+        Args:
+            submission_id (str): Primary key of submission to upvote
+
+        Returns:
+            Submission: Returned submission.
+        """
+        return Submission(**self.http.post(f"/submission/{submission_id}/upvote", data=None)["data"])
+
+    @handler
+    def hello(self):
+        print(self.http.url)
+        return self.http.get("/")
 
     @staticmethod
     def __params(page: int, items_per_page: int, **kwargs) -> Dict[str, str]:
