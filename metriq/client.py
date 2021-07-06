@@ -102,7 +102,7 @@ class MetriqClient:
         Returns:
             Submission: Returned submission.
         """
-        return Submission(**self.http.post(f"/submission/{submission_id}/upvote", data=None)["data"])
+        return Submission(**self.http.post(f"/submission/{submission_id}/upvote")["data"])
 
     @staticmethod
     def __params(page: int, items_per_page: int, **kwargs) -> Dict[str, str]:
