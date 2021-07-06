@@ -104,11 +104,6 @@ class MetriqClient:
         """
         return Submission(**self.http.post(f"/submission/{submission_id}/upvote", data=None)["data"])
 
-    @handler
-    def hello(self):
-        print(self.http.url)
-        return self.http.get("/")
-
     @staticmethod
     def __params(page: int, items_per_page: int, **kwargs) -> Dict[str, str]:
         params = {key: str(value) for key, value in kwargs.items()}
