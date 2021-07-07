@@ -104,6 +104,21 @@ class MetriqClient:
         """
         return Submission(**self.http.post(f"/submission/{submission_id}/upvote")["data"])
 
+    @handler
+    def submission_top_list(self, page: int = 0) -> List[Submission]:
+        """Return a list of top submissions.
+
+        Args:
+            page (int): Desired page.
+
+        Returns:
+            List[Submission]: List of submission objects.
+        """
+        return [
+            Submission(**r)
+            for r in self.http.get(f"/submission/top/{page}/")["data"]
+        ]
+
     @staticmethod
     def __params(page: int, items_per_page: int, **kwargs) -> Dict[str, str]:
         params = {key: str(value) for key, value in kwargs.items()}

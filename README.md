@@ -12,7 +12,7 @@ Documentation can be found on the
 
 It is published to the
 [Python Package Index](https://pypi.org/project/metriq-client/) and
-can be installed by simply calling `pip install paperswithcode-client`.
+can be installed by simply calling `pip install metriq-client`.
 
 ## Quick usage example
 
@@ -25,12 +25,74 @@ pip install metriq-client
 To check that the `metriq-client` API is working as expected:
 
 ```python
-
 from metriq import MetriqClient
 
 client = MetriqClient()
 print(client.hello())
 >>> {'status': 'API is working', 'message': 'This is the Metriq public REST API.'}
+```
+
+## Submissions
+
+### Adding submission
+
+One may add a submission via the API by making use of the `SubmissionCreateRequest` module. The following example shows
+the output after creating a submission with submission name `Test Submission`.
+
+```python
+from metriq.models.submission import SubmissionCreateRequest
+
+print(client.submission_add(
+    SubmissionCreateRequest(
+        userId="12345",
+        submissionName="Test Submission",
+    )
+))
+>>> id='60e5e72dac1d90070ba71f1d' userId='123' submissionName='Test Submission' submissionNameNormal='test submissions' 
+>>> submittedDate='2021-07-07T17:41:01.770Z' upvotes=[] deletedDate=None
+```
+
+This creates a new submission in the database and also provides further information about the submission that has 
+been created. Note that the `id` field will vary as it is  automatically assigned upon creation.
+
+### Retrieving submission
+
+Submissions can be retrieved by the automatically assigned `id` field. 
+
+```python
+from metriq import MetriqClient
+print(client.submission_get("SUBMISSION_ID"))
+>>> id='SUBMISSION_ID' userId='USER_ID' submissionName='SUBMISSION_NAME'  submissionNameNormal='submission_name' 
+>>> submittedDate='2021-07-07T15:17:40.163Z' upvotes=[] deletedDate=None
+```
+
+where the string `SUBMISSION_ID` is a string that corresponds to the submission ID in question. 
+
+### Deleting submission
+
+Submissions can be deleted by the automatically assigned `id` field.
+
+```python
+print(client.submission_delete("SUBMISSION_ID"))
+```
+
+### Upvoting submission
+
+Submissions can be upvoted by the automatically assigned `id` field.
+
+```python
+client.submission_upvote("SUBMISSION_ID")
+print(client.submission_get("SUBMISSION_ID").upvotes)
+>>> ['UPVOTER_SUBMISSION_ID']
+```
+
+### Retrieving top submissions
+
+A list of the top submissions with respect to upvotes can be retrieved as follows
+
+```python
+client.submission_top_list()
+>>> [Submission(...), ..., Submission(...)]
 ```
 
 For full docs please see our [ReadTheDocs](https://metriq-client.readthedocs.io/en/latest/) page.
