@@ -86,13 +86,20 @@ print(client.submission_get("SUBMISSION_ID").upvotes)
 >>> ['UPVOTER_SUBMISSION_ID']
 ```
 
-### Retrieving top submissions
+### Retrieving latest, trending, and popular submissions
 
-A list of the top submissions with respect to upvotes can be retrieved as follows
+It is possible to retrieve a list of submissions according to their attributes of being either trending, latest, or 
+popular.
 
 ```python
-client.submission_top_list()
->>> [Submission(...), ..., Submission(...)]
+# Returns a list of submissions according to trending status:
+client.submission_trending_list()
+
+# Returns a list of submissions according to latest status:
+client.submission_latest_list()
+
+# Returns a list of submissions according to popular status:
+client.submission_popular_list()
 ```
 
 For full docs please see our [ReadTheDocs](https://metriq-client.readthedocs.io/en/latest/) page.

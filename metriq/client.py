@@ -105,8 +105,8 @@ class MetriqClient:
         return Submission(**self.http.post(f"/submission/{submission_id}/upvote")["data"])
 
     @handler
-    def submission_top_list(self, page: int = 0) -> List[Submission]:
-        """Return a list of top submissions.
+    def submission_trending_list(self, page: int = 0) -> List[Submission]:
+        """Return a list of trending submissions.
 
         Args:
             page (int): Desired page.
@@ -116,7 +116,37 @@ class MetriqClient:
         """
         return [
             Submission(**r)
-            for r in self.http.get(f"/submission/top/{page}/")["data"]
+            for r in self.http.get(f"/submission/trending/{page}/")["data"]
+        ]
+
+    @handler
+    def submission_popular_list(self, page: int = 0) -> List[Submission]:
+        """Return a list of popular submissions.
+
+        Args:
+            page (int): Desired page.
+
+        Returns:
+            List[Submission]: List of submission objects.
+        """
+        return [
+            Submission(**r)
+            for r in self.http.get(f"/submission/popular/{page}/")["data"]
+        ]
+
+    @handler
+    def submission_latest_list(self, page: int = 0) -> List[Submission]:
+        """Return a list of latest submissions.
+
+        Args:
+            page (int): Desired page.
+
+        Returns:
+            List[Submission]: List of submission objects.
+        """
+        return [
+            Submission(**r)
+            for r in self.http.get(f"/submission/latest/{page}/")["data"]
         ]
 
     @staticmethod
