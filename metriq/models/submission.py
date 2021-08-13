@@ -26,18 +26,17 @@ class Submission(TeaClientModel):
     submissionNameNormal: Optional[str]
     submissionThumbnailUrl: Optional[str]
     submittedDate: Optional[str]
+    description: Optional[str]
     upvotes: List[str]
-    tags: List[str]
-    deletedDate: Optional[str]
 
 
 class SubmissionCreateRequest(TeaClientModel):
     """SubmissionCreateRequest object.
 
     Attributes:
-        userId (str): Submission ID.
         submissionName (str): Submission name.
     """
 
-    userId: Optional[str]
     submissionName: Optional[str]
+    submissionThumbnailUrl: Optional[str]
+    description: Optional[str]
