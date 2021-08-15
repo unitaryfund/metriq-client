@@ -10,17 +10,53 @@ class Method(TeaClientModel):
 
     Attributes:
         id (str): Method ID.
+        userId: ID of user who submitted method.
         name (str): Method short name.
-        full_name (str): Method full name.
+        fullName (str): Method full name.
         description (str): Method description.
-        paper (str, optional): ID of the paper that describes the method.
+        submittedDate (str): Date of submission.
+        deletedDate (str): Date of deletion.
     """
 
-    id: str
-    name: str
-    full_name: str
-    description: str
-    paper: Optional[str]
+    id: Optional[str]
+    userId: Optional[str]
+    name: Optional[str]
+    fullName: Optional[str]
+    description: Optional[str] = ""
+    submittedDate: Optional[str]
+    deletedDate: Optional[str]
+
+
+class MethodUpdateRequest(TeaClientModel):
+    """MethodUpdateRequest object.
+
+    Attributes:
+        name (str): Task name.
+        fullName (str): Full name of task.
+        description (str): Task description.
+        submittedDate (str): Date of submission.
+        deletedDate (str): Date of deletion.
+    """
+
+    name: Optional[str]
+    fullName: Optional[str]
+    description: Optional[str] = ""
+    submittedDate: Optional[str]
+    deletedDate: Optional[str]
+
+
+class MethodCreateRequest(TeaClientModel):
+    """MethodCreateRequest object.
+
+    Attributes:
+        name (str): Method name.
+        fullName (str): Method full name.
+        description (str): Method description.
+    """
+
+    name: Optional[str]
+    fullName: Optional[str]
+    description: Optional[str] = ""
 
 
 class Methods(Page):

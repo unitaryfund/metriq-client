@@ -1,6 +1,8 @@
 __all__ = [
     "Submission",
     "SubmissionCreateRequest",
+    "Tag",
+    "Result",
     "Page",
     "Paper",
     "Papers",
@@ -10,8 +12,6 @@ __all__ = [
     "Conferences",
     "Proceeding",
     "Proceedings",
-    "Area",
-    "Areas",
     "Task",
     "TaskCreateRequest",
     "TaskUpdateRequest",
@@ -22,6 +22,8 @@ __all__ = [
     "Datasets",
     "Method",
     "Methods",
+    "MethodCreateRequest",
+    "MethodUpdateRequest",
     "EvaluationTable",
     "EvaluationTables",
     "EvaluationTableCreateRequest",
@@ -44,6 +46,12 @@ from metriq.models.submission import (
     Submission,
     SubmissionCreateRequest
 )
+from metriq.models.tag import (
+    Tag,
+)
+from metriq.models.result import (
+    Result,
+)
 from metriq.models.page import Page
 from metriq.models.paper import Paper, Papers
 from metriq.models.repository import Repository, Repositories
@@ -54,8 +62,6 @@ from metriq.models.conference import (
     Proceedings,
 )
 from metriq.models.task import (
-    Area,
-    Areas,
     Task,
     TaskCreateRequest,
     TaskUpdateRequest,
@@ -67,7 +73,12 @@ from metriq.models.dataset import (
     DatasetUpdateRequest,
     Datasets,
 )
-from metriq.models.method import Method, Methods
+from metriq.models.method import (
+    Method,
+    Methods,
+    MethodCreateRequest,
+    MethodUpdateRequest,
+)
 from metriq.models.evaluation import (
     EvaluationTable,
     EvaluationTables,

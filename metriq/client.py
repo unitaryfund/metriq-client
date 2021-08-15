@@ -9,6 +9,15 @@ from metriq.config import config
 from metriq.models import (
     Submission,
     SubmissionCreateRequest,
+    Tag,
+    Task,
+    TaskCreateRequest,
+    TaskUpdateRequest,
+    Method,
+    Methods,
+    MethodCreateRequest,
+    MethodUpdateRequest,
+    Result,
     Paper,
     Papers,
     Repository,
@@ -16,30 +25,17 @@ from metriq.models import (
     Conferences,
     Proceeding,
     Proceedings,
-    Area,
-    Areas,
-    Task,
-    TaskCreateRequest,
-    TaskUpdateRequest,
-    Tasks,
     Dataset,
     DatasetCreateRequest,
     DatasetUpdateRequest,
     Datasets,
-    Method,
-    Methods,
     Metric,
     MetricCreateRequest,
     MetricUpdateRequest,
-    Result,
-    ResultCreateRequest,
-    ResultUpdateRequest,
     EvaluationTable,
     EvaluationTables,
     EvaluationTableCreateRequest,
     EvaluationTableUpdateRequest,
-    EvaluationTableSyncRequest,
-    EvaluationTableSyncResponse,
 )
 
 
@@ -76,7 +72,7 @@ class MetriqClient:
         """Delete a submission.
 
         Args:
-            submission_id (str): ID of the task.
+            submission_id (str): ID of the submission.
         """
         return self.http.delete(f"/submission/{submission_id}/")
 
@@ -120,6 +116,54 @@ class MetriqClient:
         ]
 
     @handler
+    def submission_trending_by_tag_list(self, tag: str, page: int = 0) -> List[Submission]:
+        """Return a list of trending submissions by tag.
+
+        Args:
+            tag (str): Tag to search by.
+            page (int): Desired page.
+
+        Returns:
+            List[Submission]: List of submission objects.
+        """
+        return [
+            Submission(**r)
+            for r in self.http.get(f"/submission/{tag}/trending/{page}/")["data"]
+        ]
+
+    @handler
+    def submission_popular_by_tag_list(self, tag: str, page: int = 0) -> List[Submission]:
+        """Return a list of popular submissions by tag.
+
+        Args:
+            tag (str): Tag to search by.
+            page (int): Desired page.
+
+        Returns:
+            List[Submission]: List of submission objects.
+        """
+        return [
+            Submission(**r)
+            for r in self.http.get(f"/submission/{tag}/popular/{page}/")["data"]
+        ]
+
+    @handler
+    def submission_latest_by_tag_list(self, tag: str, page: int = 0) -> List[Submission]:
+        """Return a list of latest submissions by tag.
+
+        Args:
+            tag (str): Tag to search by.
+            page (int): Desired page.
+
+        Returns:
+            List[Submission]: List of submission objects.
+        """
+        return [
+            Submission(**r)
+            for r in self.http.get(f"/submission/{tag}/latest/{page}/")["data"]
+        ]
+
+    @handler
     def submission_popular_list(self, page: int = 0) -> List[Submission]:
         """Return a list of popular submissions.
 
@@ -148,6 +192,153 @@ class MetriqClient:
             Submission(**r)
             for r in self.http.get(f"/submission/latest/{page}/")["data"]
         ]
+
+    @handler
+    def tag_get(self) -> List[Tag]:
+        """Return a List of Tag objects.
+
+        Returns:
+            List: List of Tag objects.
+        """
+        return [
+            Tag(**r)
+            for r in self.http.get(f"/tag/")["data"]
+        ]
+
+    @handler
+    def tag_name_get(self) -> List[Tag]:
+        """Return a List of names of Tag objects.
+
+        Returns:
+            List: List of names of Tag objects.
+        """
+        return [
+            Tag(**r)
+            for r in self.http.get(f"/tag/names/")["data"]
+        ]
+
+    @handler
+    def task_add(self, task: TaskCreateRequest) -> Task:
+        """Add a task.
+
+        Args:
+            task (TaskCreateRequest): Task create request.
+
+        Returns:
+            Task: Created task.
+        """
+        return Task(**self.http.post("/task/", data=task)["data"])
+
+    @handler
+    def task_delete(self, task_id: str):
+        """Delete a task.
+
+        Args:
+            task_id (str): ID of the task.
+        """
+        return self.http.delete(f"/task/{task_id}/")
+
+    @handler
+    def task_update(self, task_id: str, task: TaskUpdateRequest) -> Task:
+        """Update a task.
+
+        Args:
+            task_id (str): ID of the task.
+            task (TaskUpdateRequest): Task update request.
+
+        Returns:
+            Task: Updated task.
+        """
+        return Task(**self.http.patch(f"/task/{task_id}/", data=task))
+
+    @handler
+    def task_get(self, task_id: str) -> Task:
+        """Return a task by it's ID.
+
+        Args:
+            task_id (str): ID of the task.
+
+        Returns:
+            Task: Task object.
+        """
+        return Task(**self.http.get(f"/task/{task_id}/")["data"])
+
+    @handler
+    def task_submission_count_get(self) -> List[Task]:
+        """Return a list of submission counts per Task.
+
+        Returns:
+            List: List of submission counts by Task object.
+        """
+        return [
+            Task(**r)
+            for r in self.http.get(f"/task/submissionCount/")["data"]
+        ]
+
+    @handler
+    def task_names_get(self) -> List[Task]:
+        """Return a list of Task names.
+
+        Returns:
+            List: List of names of each Task object.
+        """
+        return [
+            Task(**r)
+            for r in self.http.get(f"/task/names/")["data"]
+        ]
+
+    @handler
+    def result_metric_names(self) -> List[Result]:
+        return [
+            Result(**r)
+            for r in self.http.get(f"/result/metricNames/")["data"]
+        ]
+
+    @handler
+    def method_add(self, method: MethodCreateRequest) -> Method:
+        """Add a method.
+
+        Args:
+            method (MethodCreateRequest): Method create request.
+
+        Returns:
+            Method: Created method.
+        """
+        return Method(**self.http.post("/method/", data=method)["data"])
+
+    @handler
+    def method_delete(self, method_id: str):
+        """Delete a method.
+
+        Args:
+            method_id (str): ID of the method.
+        """
+        return self.http.delete(f"/method/{method_id}/")
+
+    @handler
+    def method_update(self, method_id: str, method: MethodUpdateRequest) -> Method:
+        """Update a method.
+
+        Args:
+            method_id (str): ID of the method.
+            method (MethodUpdateRequest): Method update request.
+
+        Returns:
+            Method: Updated method.
+        """
+        return Method(**self.http.patch(f"/method/{method_id}/", data=method))
+
+    @handler
+    def method_get(self, method_id) -> Method:
+        """Return a method by it's ID.
+
+        Args:
+            method_id (str): ID of the method.
+
+        Returns:
+            Method: Method object.
+        """
+        return Method(**self.http.get(f"/method/{method_id}/"))
 
     @staticmethod
     def __params(page: int, items_per_page: int, **kwargs) -> Dict[str, str]:
@@ -182,13 +373,13 @@ class MetriqClient:
             results=result["results"],
         )
 
-    @staticmethod
-    def __create_result(data: dict) -> Result:
-        return Result(**data)
-
-    @staticmethod
-    def __create_result_sync_data(data: dict) -> dict:
-        return data
+    # @staticmethod
+    # def __create_result(data: dict) -> Result:
+    #     return Result(**data)
+    #
+    # @staticmethod
+    # def __create_result_sync_data(data: dict) -> dict:
+    #     return data
 
     @handler
     def paper_list(
@@ -241,17 +432,17 @@ class MetriqClient:
             for r in self.http.get(f"/papers/{paper_id}/repositories/")
         ]
 
-    @handler
-    def paper_task_list(self, paper_id: str) -> List[Task]:
-        """Return a list of tasks mentioned in the paper.
-
-        Args:
-            paper_id (str): ID of the paper.
-
-        Returns:
-            List[Task]: List of task objects.
-        """
-        return [Task(**t) for t in self.http.get(f"/papers/{paper_id}/tasks/")]
+    # @handler
+    # def paper_task_list(self, paper_id: str) -> List[Task]:
+    #     """Return a list of tasks mentioned in the paper.
+    #
+    #     Args:
+    #         paper_id (str): ID of the paper.
+    #
+    #     Returns:
+    #         List[Task]: List of task objects.
+    #     """
+    #     return [Task(**t) for t in self.http.get(f"/papers/{paper_id}/tasks/")]
 
     @handler
     def paper_method_list(self, paper_id: str) -> List[Method]:
@@ -267,20 +458,20 @@ class MetriqClient:
             Method(**t) for t in self.http.get(f"/papers/{paper_id}/methods/")
         ]
 
-    @handler
-    def paper_result_list(self, paper_id: str) -> List[Result]:
-        """Return a list of evaluation results for the paper.
-
-        Args:
-            paper_id (str): ID of the paper.
-
-        Returns:
-            List[Result]: List of result objects.
-        """
-        return [
-            self.__create_result(result)
-            for result in self.http.get(f"/papers/{paper_id}/results/")
-        ]
+    # @handler
+    # def paper_result_list(self, paper_id: str) -> List[Result]:
+    #     """Return a list of evaluation results for the paper.
+    #
+    #     Args:
+    #         paper_id (str): ID of the paper.
+    #
+    #     Returns:
+    #         List[Result]: List of result objects.
+    #     """
+    #     return [
+    #         self.__create_result(result)
+    #         for result in self.http.get(f"/papers/{paper_id}/results/")
+    #     ]
 
     @handler
     def conference_list(
@@ -378,172 +569,172 @@ class MetriqClient:
             )
         ]
 
-    @handler
-    def area_list(
-        self, q: Optional[str] = None, page: int = 1, items_per_page: int = 50
-    ) -> Areas:
-        """Return a paginated list of areas.
-
-        Args:
-            q (str): Filter areas by querying the area name.
-            page (int): Desired page.
-            items_per_page (int): Desired number of items per page.
-                Default: 50.
-
-        Returns:
-            Areas: Areas object.
-        """
-        params = self.__params(page, items_per_page)
-        timeout = None
-        if q is not None:
-            params["q"] = q
-            timeout = 60
-        return self.__page(
-            self.http.get("/areas/", params=params, timeout=timeout), Areas
-        )
-
-    @handler
-    def area_get(self, area_id: str) -> Area:
-        """Return an area by it's ID.
-
-        Args:
-            area_id (str): ID of the area.
-
-        Returns:
-            Area: Area object.
-        """
-        return Area(**self.http.get(f"/areas/{area_id}/"))
-
-    @handler
-    def area_task_list(
-        self, area_id: str, page: int = 1, items_per_page: int = 50
-    ) -> Tasks:
-        """Return a paginated list of tasks in an area.
-
-        Args:
-            area_id (str): ID of the area.
-            page (int): Desired page.
-            items_per_page (int): Desired number of items per page.
-                Default: 50.
-
-        Returns:
-            Tasks: Tasks object.
-        """
-        return self.__page(
-            self.http.get(
-                f"/areas/{area_id}/tasks/",
-                params=self.__params(page, items_per_page),
-            ),
-            Tasks,
-        )
-
-    @handler
-    def task_list(
-        self, q: Optional[str] = None, page: int = 1, items_per_page: int = 50
-    ) -> Tasks:
-        """Return a paginated list of tasks.
-
-        Args:
-            q (str): Filter tasks by querying the task name.
-            page (int): Desired page.
-            items_per_page (int): Desired number of items per page.
-                Default: 50.
-
-        Returns:
-            Tasks: Tasks object.
-        """
-        params = self.__params(page, items_per_page)
-        timeout = None
-        if q is not None:
-            params["q"] = q
-            timeout = 60
-        return self.__page(
-            self.http.get("/tasks/", params=params, timeout=timeout), Tasks
-        )
-
-    @handler
-    def task_get(self, task_id: str) -> Task:
-        """Return a task by it's ID.
-
-        Args:
-            task_id (str): ID of the task.
-
-        Returns:
-            Task: Task object.
-        """
-        return Task(**self.http.get(f"/tasks/{task_id}/"))
-
-    @handler
-    def task_add(self, task: TaskCreateRequest) -> Task:
-        """Add a task.
-
-        Args:
-           task (TaskCreateRequest): Task create request.
-
-        Returns:
-            Task: Created task.
-        """
-        return Task(**self.http.post("/tasks/", data=task))
-
-    @handler
-    def task_update(self, task_id: str, task: TaskUpdateRequest) -> Task:
-        """Update a task.
-
-        Args:
-            task_id (str): ID of the task.
-            task (TaskUpdateRequest): Task update request.
-
-        Returns:
-            Task: Updated task.
-        """
-        return Task(**self.http.patch(f"/tasks/{task_id}/", data=task))
-
-    @handler
-    def task_delete(self, task_id: str):
-        """Delete a task.
-
-        Args:
-            task_id (str): ID of the task.
-        """
-        self.http.delete(f"/tasks/{task_id}/")
-
-    @handler
-    def task_paper_list(
-        self, task_id: str, page: int = 1, items_per_page: int = 50
-    ) -> Papers:
-        """Return a paginated list of papers for a selected task.
-
-        Args:
-            task_id (str): ID of the task.
-            page (int): Desired page.
-            items_per_page (int): Desired number of items per page.
-                Default: 50.
-
-        Returns:
-            Papers: Papers object.
-        """
-        return self.__page(
-            self.http.get(
-                f"/tasks/{task_id}/papers/",
-                params=self.__params(page, items_per_page),
-            ),
-            Papers,
-        )
-
-    @handler
-    def task_evaluation_list(self, task_id: str) -> List[EvaluationTable]:
-        """Return a list of evaluation tables for a selected task.
-
-        Args:
-            task_id (str): ID of the task.
-
-        Returns:
-            List[EvaluationTable]: List of short evaluation table objects.
-        """
-        return [
-            EvaluationTable(**sp)
-            for sp in self.http.get(f"/tasks/{task_id}/evaluations/")
-        ]
+    # @handler
+    # def area_list(
+    #     self, q: Optional[str] = None, page: int = 1, items_per_page: int = 50
+    # ) -> Areas:
+    #     """Return a paginated list of areas.
+    #
+    #     Args:
+    #         q (str): Filter areas by querying the area name.
+    #         page (int): Desired page.
+    #         items_per_page (int): Desired number of items per page.
+    #             Default: 50.
+    #
+    #     Returns:
+    #         Areas: Areas object.
+    #     """
+    #     params = self.__params(page, items_per_page)
+    #     timeout = None
+    #     if q is not None:
+    #         params["q"] = q
+    #         timeout = 60
+    #     return self.__page(
+    #         self.http.get("/areas/", params=params, timeout=timeout), Areas
+    #     )
+    #
+    # @handler
+    # def area_get(self, area_id: str) -> Area:
+    #     """Return an area by it's ID.
+    #
+    #     Args:
+    #         area_id (str): ID of the area.
+    #
+    #     Returns:
+    #         Area: Area object.
+    #     """
+    #     return Area(**self.http.get(f"/areas/{area_id}/"))
+    #
+    # @handler
+    # def area_task_list(
+    #     self, area_id: str, page: int = 1, items_per_page: int = 50
+    # ) -> Tasks:
+    #     """Return a paginated list of tasks in an area.
+    #
+    #     Args:
+    #         area_id (str): ID of the area.
+    #         page (int): Desired page.
+    #         items_per_page (int): Desired number of items per page.
+    #             Default: 50.
+    #
+    #     Returns:
+    #         Tasks: Tasks object.
+    #     """
+    #     return self.__page(
+    #         self.http.get(
+    #             f"/areas/{area_id}/tasks/",
+    #             params=self.__params(page, items_per_page),
+    #         ),
+    #         Tasks,
+    #     )
+    #
+    # @handler
+    # def task_list(
+    #     self, q: Optional[str] = None, page: int = 1, items_per_page: int = 50
+    # ) -> Tasks:
+    #     """Return a paginated list of tasks.
+    #
+    #     Args:
+    #         q (str): Filter tasks by querying the task name.
+    #         page (int): Desired page.
+    #         items_per_page (int): Desired number of items per page.
+    #             Default: 50.
+    #
+    #     Returns:
+    #         Tasks: Tasks object.
+    #     """
+    #     params = self.__params(page, items_per_page)
+    #     timeout = None
+    #     if q is not None:
+    #         params["q"] = q
+    #         timeout = 60
+    #     return self.__page(
+    #         self.http.get("/tasks/", params=params, timeout=timeout), Tasks
+    #     )
+    #
+    # @handler
+    # def task_get(self, task_id: str) -> Task:
+    #     """Return a task by it's ID.
+    #
+    #     Args:
+    #         task_id (str): ID of the task.
+    #
+    #     Returns:
+    #         Task: Task object.
+    #     """
+    #     return Task(**self.http.get(f"/tasks/{task_id}/"))
+    #
+    # @handler
+    # def task_add(self, task: TaskCreateRequest) -> Task:
+    #     """Add a task.
+    #
+    #     Args:
+    #        task (TaskCreateRequest): Task create request.
+    #
+    #     Returns:
+    #         Task: Created task.
+    #     """
+    #     return Task(**self.http.post("/tasks/", data=task))
+    #
+    # @handler
+    # def task_update(self, task_id: str, task: TaskUpdateRequest) -> Task:
+    #     """Update a task.
+    #
+    #     Args:
+    #         task_id (str): ID of the task.
+    #         task (TaskUpdateRequest): Task update request.
+    #
+    #     Returns:
+    #         Task: Updated task.
+    #     """
+    #     return Task(**self.http.patch(f"/tasks/{task_id}/", data=task))
+    #
+    # @handler
+    # def task_delete(self, task_id: str):
+    #     """Delete a task.
+    #
+    #     Args:
+    #         task_id (str): ID of the task.
+    #     """
+    #     self.http.delete(f"/tasks/{task_id}/")
+    #
+    # @handler
+    # def task_paper_list(
+    #     self, task_id: str, page: int = 1, items_per_page: int = 50
+    # ) -> Papers:
+    #     """Return a paginated list of papers for a selected task.
+    #
+    #     Args:
+    #         task_id (str): ID of the task.
+    #         page (int): Desired page.
+    #         items_per_page (int): Desired number of items per page.
+    #             Default: 50.
+    #
+    #     Returns:
+    #         Papers: Papers object.
+    #     """
+    #     return self.__page(
+    #         self.http.get(
+    #             f"/tasks/{task_id}/papers/",
+    #             params=self.__params(page, items_per_page),
+    #         ),
+    #         Papers,
+    #     )
+    #
+    # @handler
+    # def task_evaluation_list(self, task_id: str) -> List[EvaluationTable]:
+    #     """Return a list of evaluation tables for a selected task.
+    #
+    #     Args:
+    #         task_id (str): ID of the task.
+    #
+    #     Returns:
+    #         List[EvaluationTable]: List of short evaluation table objects.
+    #     """
+    #     return [
+    #         EvaluationTable(**sp)
+    #         for sp in self.http.get(f"/tasks/{task_id}/evaluations/")
+    #     ]
 
     @handler
     def dataset_list(
@@ -655,18 +846,6 @@ class MetriqClient:
             ),
             Methods,
         )
-
-    @handler
-    def method_get(self, method_id) -> Method:
-        """Return a method by it's ID.
-
-        Args:
-            method_id (str): ID of the method.
-
-        Returns:
-            Method: Method object.
-        """
-        return Method(**self.http.get(f"/methods/{method_id}/"))
 
     @handler
     def evaluation_list(
@@ -833,96 +1012,96 @@ class MetriqClient:
         """
         self.http.delete(f"/evaluations/{evaluation_id}/metrics/{metric_id}/")
 
-    @handler
-    def evaluation_result_list(self, evaluation_id: str) -> List[Result]:
-        """List all results from the evaluation table.
+    # @handler
+    # def evaluation_result_list(self, evaluation_id: str) -> List[Result]:
+    #     """List all results from the evaluation table.
+    #
+    #     Args:
+    #         evaluation_id (str): ID of the evaluation table.
+    #
+    #     Returns:
+    #         List[Result]: All results from the evaluation table.
+    #     """
+    #     return [
+    #         self.__create_result(result)
+    #         for result in self.http.get(
+    #             f"/evaluations/{evaluation_id}/results/"
+    #         )
+    #     ]
 
-        Args:
-            evaluation_id (str): ID of the evaluation table.
-
-        Returns:
-            List[Result]: All results from the evaluation table.
-        """
-        return [
-            self.__create_result(result)
-            for result in self.http.get(
-                f"/evaluations/{evaluation_id}/results/"
-            )
-        ]
-
-    @handler
-    def evaluation_result_get(
-        self, evaluation_id: str, result_id: str
-    ) -> Result:
-        """Get a result from the evaluation table.
-
-        Args:
-            evaluation_id (str): ID of the evaluation table.
-            result_id (str): ID of the result.
-
-        Returns:
-            Result: Requested result.
-        """
-        return self.__create_result(
-            self.http.get(f"/evaluations/{evaluation_id}/results/{result_id}/")
-        )
-
-    @handler
-    def evaluation_result_add(
-        self, evaluation_id: str, result: ResultCreateRequest
-    ) -> Result:
-        """Add a result to the evaluation table.
-
-        Args:
-            evaluation_id (str): ID of the evaluation table.
-            result (ResultCreateRequest): Result create request.
-
-        Returns:
-            Result: Created result.
-        """
-        return self.__create_result(
-            self.http.post(
-                f"/evaluations/{evaluation_id}/results/", data=result
-            )
-        )
-
-    @handler
-    def evaluation_result_update(
-        self, evaluation_id: str, result_id: str, result: ResultUpdateRequest
-    ) -> Result:
-        """Update a result in the evaluation table.
-
-        Args:
-            evaluation_id (str): ID of the evaluation table.
-            result_id (str): ID of the result.
-            result (ResultUpdateRequest): Result update request.
-
-        Returns:
-            Result: Updated result.
-        """
-        return self.__create_result(
-            self.http.patch(
-                f"/evaluations/{evaluation_id}/results/{result_id}/",
-                data=result,
-            )
-        )
-
-    @handler
-    def evaluation_result_delete(self, evaluation_id: str, result_id: str):
-        """Delete a result from the evaluation table.
-
-        Args:
-            evaluation_id (str): ID of the evaluation table.
-            result_id (str): ID of the result.
-        """
-        self.http.delete(f"/evaluations/{evaluation_id}/results/{result_id}/")
-
-    @handler
-    def evaluation_synchronize(
-        self, evaluation: EvaluationTableSyncRequest
-    ) -> EvaluationTableSyncResponse:
-        d = self.http.post("/rpc/evaluation-synchronize/", data=evaluation)
-        d["results"] = [
-            self.__create_result_sync_data(result) for result in d["results"]
-        ]
-        return EvaluationTableSyncResponse(**d)
+    # @handler
+    # def evaluation_result_get(
+    #     self, evaluation_id: str, result_id: str
+    # ) -> Result:
+    #     """Get a result from the evaluation table.
+    #
+    #     Args:
+    #         evaluation_id (str): ID of the evaluation table.
+    #         result_id (str): ID of the result.
+    #
+    #     Returns:
+    #         Result: Requested result.
+    #     """
+    #     return self.__create_result(
+    #         self.http.get(f"/evaluations/{evaluation_id}/results/{result_id}/")
+    #     )
+    #
+    # @handler
+    # def evaluation_result_add(
+    #     self, evaluation_id: str, result: ResultCreateRequest
+    # ) -> Result:
+    #     """Add a result to the evaluation table.
+    #
+    #     Args:
+    #         evaluation_id (str): ID of the evaluation table.
+    #         result (ResultCreateRequest): Result create request.
+    #
+    #     Returns:
+    #         Result: Created result.
+    #     """
+    #     return self.__create_result(
+    #         self.http.post(
+    #             f"/evaluations/{evaluation_id}/results/", data=result
+    #         )
+    #     )
+    #
+    # @handler
+    # def evaluation_result_update(
+    #     self, evaluation_id: str, result_id: str, result: ResultUpdateRequest
+    # ) -> Result:
+    #     """Update a result in the evaluation table.
+    #
+    #     Args:
+    #         evaluation_id (str): ID of the evaluation table.
+    #         result_id (str): ID of the result.
+    #         result (ResultUpdateRequest): Result update request.
+    #
+    #     Returns:
+    #         Result: Updated result.
+    #     """
+    #     return self.__create_result(
+    #         self.http.patch(
+    #             f"/evaluations/{evaluation_id}/results/{result_id}/",
+    #             data=result,
+    #         )
+    #     )
+    #
+    # @handler
+    # def evaluation_result_delete(self, evaluation_id: str, result_id: str):
+    #     """Delete a result from the evaluation table.
+    #
+    #     Args:
+    #         evaluation_id (str): ID of the evaluation table.
+    #         result_id (str): ID of the result.
+    #     """
+    #     self.http.delete(f"/evaluations/{evaluation_id}/results/{result_id}/")
+    #
+    # @handler
+    # def evaluation_synchronize(
+    #     self, evaluation: EvaluationTableSyncRequest
+    # ) -> EvaluationTableSyncResponse:
+    #     d = self.http.post("/rpc/evaluation-synchronize/", data=evaluation)
+    #     d["results"] = [
+    #         self.__create_result_sync_data(result) for result in d["results"]
+    #     ]
+    #     return EvaluationTableSyncResponse(**d)
