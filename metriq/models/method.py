@@ -41,8 +41,6 @@ class MethodUpdateRequest(TeaClientModel):
     name: Optional[str]
     fullName: Optional[str]
     description: Optional[str] = ""
-    submittedDate: Optional[str]
-    deletedDate: Optional[str]
 
 
 class MethodCreateRequest(TeaClientModel):

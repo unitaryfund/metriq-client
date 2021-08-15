@@ -1,6 +1,7 @@
 __all__ = [
     "Submission",
     "SubmissionCreateRequest",
+    "SubmissionUpdateRequest",
     "Tag",
     "Result",
     "Page",
@@ -44,7 +45,8 @@ __all__ = [
 
 from metriq.models.submission import (
     Submission,
-    SubmissionCreateRequest
+    SubmissionCreateRequest,
+    SubmissionUpdateRequest,
 )
 from metriq.models.tag import (
     Tag,

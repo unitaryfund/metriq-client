@@ -9,6 +9,7 @@ from metriq.config import config
 from metriq.models import (
     Submission,
     SubmissionCreateRequest,
+    SubmissionUpdateRequest,
     Tag,
     Task,
     TaskCreateRequest,
@@ -87,6 +88,58 @@ class MetriqClient:
             Submission: Created submission.
         """
         return Submission(**self.http.post("/submission/", data=submission)["data"])
+
+    @handler
+    def submission_add_method(self, submission_id: str, method_id: str) -> Submission:
+        """Add a method to a submission.
+
+        Args:
+            submission_id: ID of submission
+            method_id: ID of method
+
+        Returns:
+            Submission: Created submission with method.
+        """
+        return Submission(**self.http.post(f"/submission/{submission_id}/method/{method_id}", data=None)["data"])
+
+    @handler
+    def submission_add_task(self, submission_id: str, task_id: str) -> Submission:
+        """Add a task to a submission.
+
+        Args:
+            submission_id: ID of submission
+            task_id: ID of task
+
+        Returns:
+            Submission: Created submission with task.
+        """
+        return Submission(**self.http.post(f"/submission/{submission_id}/task/{task_id}", data=None)["data"])
+
+    @handler
+    def submission_add_tag(self, submission_id: str, tag_name: str) -> Submission:
+        """Add a tag to a submission.
+
+        Args:
+            submission_id: ID of submission
+            tag_name: ID of tag
+
+        Returns:
+            Submission: Created submission with tag.
+        """
+        return Submission(**self.http.post(f"/submission/{submission_id}/tag/{tag_name}", data=None)["data"])
+
+    @handler
+    def submission_update(self, submission_id: str, submission: SubmissionUpdateRequest) -> Submission:
+        """Update a submission.
+
+        Args:
+            submission_id (str): ID of the submission.
+            submission (SubmissionUpdateRequest): Submission update request.
+
+        Returns:
+            Submission: Updated submission.
+        """
+        return Submission(**self.http.patch(f"/submission/{submission_id}/", data=submission))
 
     @handler
     def submission_upvote(self, submission_id: str):
@@ -206,7 +259,7 @@ class MetriqClient:
         ]
 
     @handler
-    def tag_name_get(self) -> List[Tag]:
+    def tag_names_get(self) -> List[Tag]:
         """Return a List of names of Tag objects.
 
         Returns:
@@ -339,6 +392,30 @@ class MetriqClient:
             Method: Method object.
         """
         return Method(**self.http.get(f"/method/{method_id}/"))
+
+    @handler
+    def method_submission_count_get(self) -> List[Method]:
+        """Return method submission count.
+
+        Returns:
+            List: List of Method objects.
+        """
+        return [
+            Method(**r)
+            for r in self.http.get(f"/method/submissionCount/")["data"]
+        ]
+
+    @handler
+    def method_names_get(self) -> List[Method]:
+        """Return method names.
+
+        Returns:
+            List: List of Method objects.
+        """
+        return [
+            Method(**r)
+            for r in self.http.get(f"/method/names/")["data"]
+        ]
 
     @staticmethod
     def __params(page: int, items_per_page: int, **kwargs) -> Dict[str, str]:

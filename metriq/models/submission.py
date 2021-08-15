@@ -38,6 +38,22 @@ class SubmissionCreateRequest(TeaClientModel):
 
     Attributes:
         submissionName (str): Submission name.
+        submissionThumbnailUrl (str): URL for submission image thumbnail.
+        description (str): Description of submission.
+    """
+
+    submissionName: Optional[str]
+    submissionThumbnailUrl: Optional[str]
+    description: Optional[str]
+
+
+class SubmissionUpdateRequest(TeaClientModel):
+    """SubmissionUpdateRequest object.
+
+    Attributes:
+        submissionName (str): Submission name.
+        submissionThumbnailUrl (str): URL for submission image thumbnail.
+        description (str): Description of submission.
     """
 
     submissionName: Optional[str]
