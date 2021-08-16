@@ -66,7 +66,9 @@ class MetriqClient:
         Returns:
             Submission: Submission object.
         """
-        return Submission(**self.http.get(f"/submission/{submission_id}/")["data"])
+        response = self.http.get(f"/submission/{submission_id}/")
+        print(response["message"])
+        return Submission(**response["data"])
 
     @handler
     def submission_delete(self, submission_id: str):
@@ -87,7 +89,9 @@ class MetriqClient:
         Returns:
             Submission: Created submission.
         """
-        return Submission(**self.http.post("/submission/", data=submission)["data"])
+        response = self.http.post("/submission/", data=submission)
+        print(response["message"])
+        return Submission(**response["data"])
 
     @handler
     def submission_add_method(self, submission_id: str, method_id: str) -> Submission:
@@ -100,7 +104,9 @@ class MetriqClient:
         Returns:
             Submission: Created submission with method.
         """
-        return Submission(**self.http.post(f"/submission/{submission_id}/method/{method_id}", data=None)["data"])
+        response = self.http.post(f"/submission/{submission_id}/method/{method_id}", data=None)
+        print(response["message"])
+        return Submission(**response["data"])
 
     @handler
     def submission_add_task(self, submission_id: str, task_id: str) -> Submission:
@@ -113,7 +119,9 @@ class MetriqClient:
         Returns:
             Submission: Created submission with task.
         """
-        return Submission(**self.http.post(f"/submission/{submission_id}/task/{task_id}", data=None)["data"])
+        response = self.http.post(f"/submission/{submission_id}/task/{task_id}", data=None)
+        print(response["message"])
+        return Submission(**response["data"])
 
     @handler
     def submission_add_tag(self, submission_id: str, tag_name: str) -> Submission:
@@ -126,7 +134,9 @@ class MetriqClient:
         Returns:
             Submission: Created submission with tag.
         """
-        return Submission(**self.http.post(f"/submission/{submission_id}/tag/{tag_name}", data=None)["data"])
+        response = self.http.post(f"/submission/{submission_id}/tag/{tag_name}", data=None)
+        print(response["message"])
+        return Submission(**response["data"])
 
     @handler
     def submission_update(self, submission_id: str, submission: SubmissionUpdateRequest) -> Submission:
@@ -151,7 +161,9 @@ class MetriqClient:
         Returns:
             Submission: Returned submission.
         """
-        return Submission(**self.http.post(f"/submission/{submission_id}/upvote")["data"])
+        response = self.http.post(f"/submission/{submission_id}/upvote")
+        print(response["message"])
+        return Submission(**response["data"])
 
     @handler
     def submission_trending_list(self, page: int = 0) -> List[Submission]:
@@ -163,9 +175,45 @@ class MetriqClient:
         Returns:
             List[Submission]: List of submission objects.
         """
+        response = self.http.get(f"/submission/trending/{page}/")
+        print(response["message"])
         return [
             Submission(**r)
-            for r in self.http.get(f"/submission/trending/{page}/")["data"]
+            for r in response["data"]
+        ]
+
+    @handler
+    def submission_popular_list(self, page: int = 0) -> List[Submission]:
+        """Return a list of popular submissions.
+
+        Args:
+            page (int): Desired page.
+
+        Returns:
+            List[Submission]: List of submission objects.
+        """
+        response = self.http.get(f"/submission/popular/{page}/")
+        print(response["message"])
+        return [
+            Submission(**r)
+            for r in response["data"]
+        ]
+
+    @handler
+    def submission_latest_list(self, page: int = 0) -> List[Submission]:
+        """Return a list of latest submissions.
+
+        Args:
+            page (int): Desired page.
+
+        Returns:
+            List[Submission]: List of submission objects.
+        """
+        response = self.http.get(f"/submission/latest/{page}/")
+        print(response["message"])
+        return [
+            Submission(**r)
+            for r in response["data"]
         ]
 
     @handler
@@ -179,9 +227,11 @@ class MetriqClient:
         Returns:
             List[Submission]: List of submission objects.
         """
+        response = self.http.get(f"/submission/{tag}/trending/{page}/")
+        print(response["message"])
         return [
             Submission(**r)
-            for r in self.http.get(f"/submission/{tag}/trending/{page}/")["data"]
+            for r in response["data"]
         ]
 
     @handler
@@ -195,9 +245,11 @@ class MetriqClient:
         Returns:
             List[Submission]: List of submission objects.
         """
+        response = self.http.get(f"/submission/{tag}/popular/{page}/")
+        print(response["message"])
         return [
             Submission(**r)
-            for r in self.http.get(f"/submission/{tag}/popular/{page}/")["data"]
+            for r in response["data"]
         ]
 
     @handler
@@ -211,39 +263,11 @@ class MetriqClient:
         Returns:
             List[Submission]: List of submission objects.
         """
+        response = self.http.get(f"/submission/{tag}/latest/{page}/")
+        print(response["message"])
         return [
             Submission(**r)
-            for r in self.http.get(f"/submission/{tag}/latest/{page}/")["data"]
-        ]
-
-    @handler
-    def submission_popular_list(self, page: int = 0) -> List[Submission]:
-        """Return a list of popular submissions.
-
-        Args:
-            page (int): Desired page.
-
-        Returns:
-            List[Submission]: List of submission objects.
-        """
-        return [
-            Submission(**r)
-            for r in self.http.get(f"/submission/popular/{page}/")["data"]
-        ]
-
-    @handler
-    def submission_latest_list(self, page: int = 0) -> List[Submission]:
-        """Return a list of latest submissions.
-
-        Args:
-            page (int): Desired page.
-
-        Returns:
-            List[Submission]: List of submission objects.
-        """
-        return [
-            Submission(**r)
-            for r in self.http.get(f"/submission/latest/{page}/")["data"]
+            for r in response["data"]
         ]
 
     @handler
@@ -253,9 +277,11 @@ class MetriqClient:
         Returns:
             List: List of Tag objects.
         """
+        response = self.http.get(f"/tag/")
+        print(response["message"])
         return [
             Tag(**r)
-            for r in self.http.get(f"/tag/")["data"]
+            for r in response["data"]
         ]
 
     @handler
@@ -265,9 +291,11 @@ class MetriqClient:
         Returns:
             List: List of names of Tag objects.
         """
+        response = self.http.get(f"/tag/names/")
+        print(response["message"])
         return [
             Tag(**r)
-            for r in self.http.get(f"/tag/names/")["data"]
+            for r in response["data"]
         ]
 
     @handler
@@ -280,7 +308,9 @@ class MetriqClient:
         Returns:
             Task: Created task.
         """
-        return Task(**self.http.post("/task/", data=task)["data"])
+        response = self.http.post("/task/", data=task)
+        print(response["message"])
+        return Task(**response["data"])
 
     @handler
     def task_delete(self, task_id: str):
@@ -314,7 +344,9 @@ class MetriqClient:
         Returns:
             Task: Task object.
         """
-        return Task(**self.http.get(f"/task/{task_id}/")["data"])
+        response = self.http.get(f"/task/{task_id}/")
+        print(response["message"])
+        return Task(**response["data"])
 
     @handler
     def task_submission_count_get(self) -> List[Task]:
@@ -323,9 +355,11 @@ class MetriqClient:
         Returns:
             List: List of submission counts by Task object.
         """
+        response = self.http.get(f"/task/submissionCount/")
+        print(response["message"])
         return [
             Task(**r)
-            for r in self.http.get(f"/task/submissionCount/")["data"]
+            for r in response["data"]
         ]
 
     @handler
@@ -335,16 +369,20 @@ class MetriqClient:
         Returns:
             List: List of names of each Task object.
         """
+        response = self.http.get(f"/task/names/")
+        print(response["message"])
         return [
             Task(**r)
-            for r in self.http.get(f"/task/names/")["data"]
+            for r in response["data"]
         ]
 
     @handler
     def result_metric_names(self) -> List[Result]:
+        response = self.http.get(f"/result/metricNames/")
+        print(response["message"])
         return [
             Result(**r)
-            for r in self.http.get(f"/result/metricNames/")["data"]
+            for r in response["data"]
         ]
 
     @handler
@@ -357,7 +395,9 @@ class MetriqClient:
         Returns:
             Method: Created method.
         """
-        return Method(**self.http.post("/method/", data=method)["data"])
+        response = self.http.post("/method/", data=method)
+        print(response["message"])
+        return Method(**response["data"])
 
     @handler
     def method_delete(self, method_id: str):
@@ -400,9 +440,11 @@ class MetriqClient:
         Returns:
             List: List of Method objects.
         """
+        response = self.http.get(f"/method/submissionCount/")
+        print(response["message"])
         return [
             Method(**r)
-            for r in self.http.get(f"/method/submissionCount/")["data"]
+            for r in response["data"]
         ]
 
     @handler
@@ -412,9 +454,11 @@ class MetriqClient:
         Returns:
             List: List of Method objects.
         """
+        response = self.http.get(f"/method/names/")
+        print(response["message"])
         return [
             Method(**r)
-            for r in self.http.get(f"/method/names/")["data"]
+            for r in response["data"]
         ]
 
     @staticmethod
