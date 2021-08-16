@@ -27,6 +27,7 @@ class Submission(TeaClientModel):
     submissionNameNormal: Optional[str]
     description: Optional[str]
     submittedDate: Optional[str]
+    submissionContentUrl: Optional[str]
     submissionThumbnailUrl: Optional[str]
     approvedDate: Optional[str]
     deletedDate: Optional[str]
@@ -43,6 +44,7 @@ class SubmissionCreateRequest(TeaClientModel):
     """
 
     submissionName: Optional[str]
+    submissionContentUrl: Optional[str]
     submissionThumbnailUrl: Optional[str]
     description: Optional[str]
 
@@ -57,5 +59,4 @@ class SubmissionUpdateRequest(TeaClientModel):
     """
 
     submissionName: Optional[str]
-    submissionThumbnailUrl: Optional[str]
     description: Optional[str]
