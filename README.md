@@ -16,14 +16,16 @@ can be installed by simply calling `pip install metriq-client`.
 
 ## Quick usage example
 
-To install:
+You will require the [`pipenv` package](https://pipenv.pypa.io/en/latest/) on your machine in order to instantiate a 
+virtual environment. You will need to install and activate the virtual environment:
 
 ```bash
-pip install metriq-client
+pipenv install
+pipenv shell
 ```
 
-To check that the `metriq-client` API is working as expected, run the following example script from 
-`metriq-client/examples/metriq_hello.py`:
+Once the virtual environment has been activated, to check that the `metriq-client` API is working as expected, run the 
+following example script from `metriq-client/examples/metriq_hello.py`:
 
 ```python
 from metriq import MetriqClient
