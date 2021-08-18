@@ -17,7 +17,9 @@ can be installed by simply calling `pip install metriq-client`.
 ## Quick usage example
 
 You will require the [`pipenv` package](https://pipenv.pypa.io/en/latest/) on your machine in order to instantiate a 
-virtual environment. You will need to install and activate the virtual environment:
+virtual environment. This can be done with `pip install --user pipenv`.
+
+You will then need to install and activate the virtual environment:
 
 ```bash
 pipenv install
