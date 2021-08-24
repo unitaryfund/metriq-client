@@ -2,7 +2,7 @@
 Task Models
 ===========
 
-.. automodule:: paperswithcode.models.task
+.. automodule:: metriq.models.task
     :members:
     :no-undoc-members:
 ```

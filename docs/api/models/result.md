@@ -1,8 +1,8 @@
 ```eval_rst
-Method Models
+Result Models
 =============
 
-.. automodule:: metriq.models.method
+.. automodule:: metriq.models.result
     :members:
     :no-undoc-members:
 ```

@@ -1,7 +1,7 @@
-# Welcome to the PapersWithCode API Documentation
+# Welcome to the Metriq API Documentation
 
-This documentation details how to use the `paperswithcode` library to connect 
-with [PapersWithCode](http://www.paperswithcode.com). 
+This documentation details how to use the `metriq` library to connect 
+with [metriq](http://www.metriq.info). 
 
 
 ## Contents
@@ -12,7 +12,6 @@ with [PapersWithCode](http://www.paperswithcode.com).
 
    installation.md
    quickstart.md
-   evaluations.md
 ```
 
 

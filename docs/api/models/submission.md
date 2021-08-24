@@ -1,8 +1,8 @@
 ```eval_rst
-Method Models
+Submission Models
 =============
 
-.. automodule:: metriq.models.method
+.. automodule:: metriq.models.submission
     :members:
     :no-undoc-members:
 ```
