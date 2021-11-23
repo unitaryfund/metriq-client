@@ -7,13 +7,6 @@ The API is completely covered by the client and it wraps all the API models
 into python objects and communicates with the API by getting and passing those
 objects from and to the api client.
 
-Documentation can be found on the
-[ReadTheDocs](https://metriq-client.readthedocs.io/en/latest/) website.
-
-It is published to the
-[Python Package Index](https://pypi.org/project/metriq-client/) and
-can be installed by simply calling `pip install metriq-client`.
-
 ## Quick usage example
 
 You will require the [`pipenv` package](https://pipenv.pypa.io/en/latest/) on your machine in order to instantiate a 
