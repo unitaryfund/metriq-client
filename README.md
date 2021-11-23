@@ -1,7 +1,6 @@
 # metriq API client
 
-This is a client for [Metriq](https://metriq.com/api/v1/docs/)
-read/write API.
+This is a client for [Metriq](https://metriq.info) read/write API.
 
 The API is completely covered by the client and it wraps all the API models
 into python objects and communicates with the API by getting and passing those
