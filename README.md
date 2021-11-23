@@ -30,5 +30,4 @@ print(client.hello())
 >>> {'status': 'API is working', 'message': 'This is the Metriq public REST API.'}
 ```
 
-For further examples of usage, consult `metriq-client/examples`. For full docs please see our 
-[ReadTheDocs](https://metriq-client.readthedocs.io/en/latest/) page.
+For further examples of usage, consult `metriq-client/examples`.
