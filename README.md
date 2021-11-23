@@ -2,6 +2,8 @@
 
 This is a client for [Metriq](https://metriq.info) read/write API.
 
+It is adapted from the [PapersWithCode client](https://github.com/paperswithcode/paperswithcode-client), with thanks!
+
 The API is completely covered by the client and it wraps all the API models
 into python objects and communicates with the API by getting and passing those
 objects from and to the api client.
