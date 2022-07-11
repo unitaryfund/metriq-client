@@ -1,4 +1,4 @@
-# metriq API client
+# Metriq API client
 
 This is a client for [Metriq](https://metriq.com/api/v1/docs/)
 read/write API.
