@@ -41,9 +41,9 @@ class Task(TeaClientModel):
         description (str): Task description.
     """
 
-    id: str
-    name: str
-    description: str
+    id: str("80")
+    name: str("XY Hamiltonian ground state energy")
+    description: str("The XY Model is another linear chain of spin-1/2 atoms but with a different type of exchange interaction in which only the x-components and y-components of the spins are involved, and with unequal weights.")
 
 
 class TaskCreateRequest(TeaClientModel):
