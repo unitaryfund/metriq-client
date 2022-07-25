@@ -1,4 +1,6 @@
+from telnetlib import theNULL
 from typing import List, Optional
+from xml.dom.expatbuilder import theDOMImplementation
 
 from tea_client.models import TeaClientModel
 
@@ -10,51 +12,28 @@ class Method(TeaClientModel):
 
     Attributes:
         id (str): Method ID.
-        userId: ID of user who submitted method.
         name (str): Method short name.
-        fullName (str): Method full name.
+        full_name (str): Method full name.
         description (str): Method description.
-        submittedDate (str): Date of submission.
-        deletedDate (str): Date of deletion.
+        paper (str, optional): ID of the paper that describes the method.
+        submissionCount (str): Number of submissions with the method.
+        resultCount (str): Number of results with the method.
+        upVoteTotal (str): Number of upvotes given to the method.
+        createdAt (str): Date of method creation.
+        updatedAt (str): Method update date.
     """
 
-    id: Optional[str]
-    userId: Optional[str]
-    name: Optional[str]
-    fullName: Optional[str]
-    description: Optional[str] = ""
-    submittedDate: Optional[str]
-    deletedDate: Optional[str]
+    id: str
+    name: str
+    full_name: str
+    description: str
+    submissionCount: str
+    upVoteTotal: str
+    resultCount: str
+    createdAt: str
+    updatedAt: str
+    paper: Optional[str]
 
-
-class MethodUpdateRequest(TeaClientModel):
-    """MethodUpdateRequest object.
-
-    Attributes:
-        name (str): Task name.
-        fullName (str): Full name of task.
-        description (str): Task description.
-        submittedDate (str): Date of submission.
-        deletedDate (str): Date of deletion.
-    """
-
-    name: Optional[str]
-    fullName: Optional[str]
-    description: Optional[str] = ""
-
-
-class MethodCreateRequest(TeaClientModel):
-    """MethodCreateRequest object.
-
-    Attributes:
-        name (str): Method name.
-        fullName (str): Method full name.
-        description (str): Method description.
-    """
-
-    name: Optional[str]
-    fullName: Optional[str]
-    description: Optional[str] = ""
 
 
 class Methods(Page):
