@@ -64,7 +64,6 @@ class TaskUpdateRequest(TeaClientModel):
     description: Optional[str] = ""
     parent_task: Optional[str] = None
 
-
 class Tasks(Page):
     """Object representing a paginated page of tasks.
 
