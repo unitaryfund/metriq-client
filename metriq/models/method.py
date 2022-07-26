@@ -1,6 +1,4 @@
-from telnetlib import theNULL
 from typing import List, Optional
-from xml.dom.expatbuilder import theDOMImplementation
 
 from tea_client.models import TeaClientModel
 
@@ -13,7 +11,7 @@ class Method(TeaClientModel):
     Attributes:
         id (str): Method ID.
         name (str): Method short name.
-        full_name (str): Method full name.
+        fullName (str): Method full name.
         description (str): Method description.
         paper (str, optional): ID of the paper that describes the method.
         submissionCount (str): Number of submissions with the method.
@@ -47,4 +45,3 @@ class Methods(Page):
     """
 
     results: List[Method]
-    
