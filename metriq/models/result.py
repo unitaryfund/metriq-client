@@ -22,16 +22,19 @@ class Result(TeaClientModel):
         fields = {'id': '_id'}
 
     id: str
-    # userId: Optional[str]
-    # submissionId: Optional[str]
-    # taskId: Optional[str]
-    # methodId: Optional[str]
-    # isHigherBetter: Optional[str]
-    # metricName: Optional[str]
-    # metricValue: Optional[str]
-    # evaluatedDate: Optional[str]
-    # submittedDate: Optional[str]
-    # deletedDate: Optional[str]
+    userId: Optional[str]
+    submissionId: Optional[str]
+    taskId: Optional[str]
+    methodId: Optional[str]
+    isHigherBetter: Optional[str]
+    metricName: Optional[str]
+    metricValue: Optional[str]
+    evaluatedAt: Optional[str]
+    notes: Optional[str]
+    standardError: Optional[str]
+    sampleSize: Optional[str]
+    submittedDate: Optional[str]
+    deletedDate: Optional[str]
 
 
 class ResultCreateRequest(TeaClientModel):
