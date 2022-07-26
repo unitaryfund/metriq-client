@@ -25,7 +25,7 @@ class Method(TeaClientModel):
 
     id: str
     name: str
-    full_name: str
+    fullName: str
     description: str
     submissionCount: str
     upVoteTotal: str
@@ -47,3 +47,4 @@ class Methods(Page):
     """
 
     results: List[Method]
+    
