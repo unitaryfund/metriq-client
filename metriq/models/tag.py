@@ -14,3 +14,4 @@ class Tag(TeaClientModel):
     name: str
     deletedDate: Optional[str]
     submissions: Optional[str]
+    resultCount: Optional[str]
