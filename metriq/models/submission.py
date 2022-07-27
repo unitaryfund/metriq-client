@@ -30,6 +30,7 @@ class Submission(TeaClientModel):
     submissionContentUrl: Optional[str]
     submissionThumbnailUrl: Optional[str]
     approvedDate: Optional[str]
+    updatedDate: Optional[str]
     deletedDate: Optional[str]
     upvotes: List[str]
 
