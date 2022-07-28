@@ -26,16 +26,18 @@ class ModerationReport(TeaClientModel):
     description: Optional[str]
     resolvedAt: Optional[str]
 
+class ModerationReportCreateRequest(TeaClientModel):
+    """ModerationReportCreateRequest object.
 
-
-class ModerationReports(Page):
-    """Object representing a paginated page of ModerationReport.
 
     Attributes:
-        count (int): Number of elements matching the query.
-        next_page (int, optional): Number of the next page.
-        previous_page (int, optional): Number of the previous page.
-        results (List[ModerationReport]): List of ModerationReports on this page.
+        userId (str): The ID of the user submitting the moderation report.
+        name (str): Moderation report name.
+        fullName (str): Full name of moderation report.
+        description (str): Moderation report description.
     """
 
-    results: List[ModerationReport]
+    userId: Optional[str]
+    name: Optional[str]
+    fullName: Optional[str]
+    description: Optional[str] = ""
