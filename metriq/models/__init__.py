@@ -14,6 +14,7 @@ __all__ = [
     "MethodCreateRequest",
     "MethodUpdateRequest",
     "Result",
+    "ModerationReport"
 ]
 
 from metriq.models.submission import (
@@ -39,4 +40,9 @@ from metriq.models.method import (
     Methods,
     MethodCreateRequest,
     MethodUpdateRequest,
+)
+from metriq.models.moderationReport import (
+    ModerationReport,
+    ModerationReportCreateRequest,
+    ModerationReportRequest
 )
