@@ -413,7 +413,7 @@ class MetriqClient:
         Returns:
             Method: Method object.
         """
-        return Method(**self.http.get(f"/method/{method_id}/"))
+        return Method(**(self.http.get(f"/method/{method_id}/")['data']))
 
     @handler
     def method_submission_count_get(self) -> List[Method]:
