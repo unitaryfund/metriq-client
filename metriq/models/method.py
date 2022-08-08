@@ -25,12 +25,9 @@ class Method(TeaClientModel):
     name: str
     fullName: str
     description: str
-    submissionCount: str
-    upVoteTotal: str
-    resultCount: str
     createdAt: str
     updatedAt: str
-    paper: Optional[str]
+    userId: str
 
 class MethodUpdateRequest(TeaClientModel):
     """MethodUpdateRequest object.
