@@ -442,3 +442,16 @@ class MetriqClient:
             Method(**r)
             for r in response["data"]
         ]
+
+    @handler
+    def platform_update(self, environment_id: str, environment: EnvironmentUpdateRequest) -> Environment:
+        """Update an Environment.
+
+        Args:
+            environment_id (str): ID of the environment.
+            environment (environmentUpdateRequest): environment update request.
+
+        Returns:
+            Environment: Updated environment.
+        """
+        return Environment(**self.http.patch(f"/platform/{environment_id}/", data=environment))
