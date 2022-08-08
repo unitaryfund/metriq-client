@@ -21,7 +21,7 @@ class Submission(TeaClientModel):
     class Config:
         fields = {'id': '_id'}
 
-    id: Optional[str]
+    id:Optional[str]
     userId: Optional[str]
     submissionName: Optional[str]
     submissionNameNormal: Optional[str]
@@ -31,7 +31,7 @@ class Submission(TeaClientModel):
     submissionThumbnailUrl: Optional[str]
     approvedDate: Optional[str]
     deletedDate: Optional[str]
-    upvotes: Optional[str]
+    upvotes:Optional[str]
 
 
 class SubmissionCreateRequest(TeaClientModel):
