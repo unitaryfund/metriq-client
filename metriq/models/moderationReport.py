@@ -41,3 +41,15 @@ class ModerationReportCreateRequest(TeaClientModel):
     name: Optional[str]
     fullName: Optional[str]
     description: Optional[str] = ""
+
+class ModerationReports(Page):
+    """Object representing a paginated page of moderation reports.
+
+    Attributes:
+        count (int): Number of elements matching the query.
+        next_page (int, optional): Number of the next page.
+        previous_page (int, optional): Number of the previous page.
+        results (List[ModerationReport]): List of moderation reports on this page.
+    """
+
+    results: List[ModerationReport]

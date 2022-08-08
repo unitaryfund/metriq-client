@@ -44,5 +44,5 @@ from metriq.models.method import (
 from metriq.models.moderationReport import (
     ModerationReport,
     ModerationReportCreateRequest,
-    ModerationReportRequest
+    ModerationReports
 )

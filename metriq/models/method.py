@@ -32,7 +32,32 @@ class Method(TeaClientModel):
     updatedAt: str
     paper: Optional[str]
 
+class MethodUpdateRequest(TeaClientModel):
+    """MethodUpdateRequest object.
+    Attributes:
+        name (str): Task name.
+        fullName (str): Full name of task.
+        description (str): Task description.
+        submittedDate (str): Date of submission.
+        deletedDate (str): Date of deletion.
+    """
 
+    name: Optional[str]
+    fullName: Optional[str]
+    description: Optional[str] = ""
+
+
+class MethodCreateRequest(TeaClientModel):
+    """MethodCreateRequest object.
+    Attributes:
+        name (str): Method name.
+        fullName (str): Method full name.
+        description (str): Method description.
+    """
+
+    name: Optional[str]
+    fullName: Optional[str]
+    description: Optional[str] = ""
 
 class Methods(Page):
     """Object representing a paginated page of methods.
