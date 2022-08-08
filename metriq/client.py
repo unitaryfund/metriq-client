@@ -1,3 +1,4 @@
+from msilib.schema import Environment
 from urllib import parse
 from typing import Dict, List, Optional
 
@@ -442,3 +443,17 @@ class MetriqClient:
             Method(**r)
             for r in response["data"]
         ]
+
+    @handler
+    def platform_add(self, environment: EnvironmentCreateRequest) -> Environment:
+        """Add an environment.
+
+        Args:
+            environment (EnvironmentCreateRequest): Environment create request.
+
+        Returns:
+            Environment: Created environment.
+        """
+        response = self.http.post("/task/", data=environment)
+        print(response["message"])
+        return Environment(**response["data"])
