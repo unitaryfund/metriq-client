@@ -452,8 +452,7 @@ class MetriqClient:
         Returns:
             List: List of Environment objects.
         """
-        response = self.http.get(f"/environment/")
-        print(response["message"])
+        response = self.http.get(f"/platform/")
         return [
             Environment(**r)
             for r in response["data"]
