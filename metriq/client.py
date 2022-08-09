@@ -446,6 +446,19 @@ class MetriqClient:
         ]
 
     @handler
+    def platform_add(self, environment: EnvironmentCreateRequest) -> Environment:
+        """Add an environment.
+
+        Args:
+            environment (EnvironmentCreateRequest): Environment create request.
+
+        Returns:
+            Environment: Created environment.
+        """
+        response = self.http.post("/platform/", data=environment)
+        return Environment(**response["data"])
+
+    @handler
     def platform_get(self) -> List[Environment]:
         """Return a List of Environment objects.
 
