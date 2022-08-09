@@ -20,6 +20,7 @@ from metriq.models import (
     MethodCreateRequest,
     MethodUpdateRequest,
     Result,
+    Environment,
 )
 
 
@@ -456,3 +457,16 @@ class MetriqClient:
         """
         response = self.http.post("/platform/", data=environment)
         return Environment(**response["data"])
+
+    @handler
+    def platform_get(self) -> List[Environment]:
+        """Return a List of Environment objects.
+
+        Returns:
+            List: List of Environment objects.
+        """
+        response = self.http.get(f"/platform/")
+        return [
+            Environment(**r)
+            for r in response["data"]
+        ]
