@@ -1,3 +1,4 @@
+from msilib.schema import Environment
 from urllib import parse
 from typing import Dict, List, Optional
 
@@ -19,6 +20,7 @@ from metriq.models import (
     MethodCreateRequest,
     MethodUpdateRequest,
     Result,
+    Environment,
 )
 
 
@@ -455,3 +457,29 @@ class MetriqClient:
             Environment: Updated environment.
         """
         return Environment(**self.http.patch(f"/platform/{environment_id}/", data=environment))
+
+    @handler
+    def platform_add(self, environment: EnvironmentCreateRequest) -> Environment:
+        """Add an environment.
+
+        Args:
+            environment (EnvironmentCreateRequest): Environment create request.
+
+        Returns:
+            Environment: Created environment.
+        """
+        response = self.http.post("/platform/", data=environment)
+        return Environment(**response["data"])
+
+    @handler
+    def platform_get(self) -> List[Environment]:
+        """Return a List of Environment objects.
+
+        Returns:
+            List: List of Environment objects.
+        """
+        response = self.http.get(f"/platform/")
+        return [
+            Environment(**r)
+            for r in response["data"]
+        ]
