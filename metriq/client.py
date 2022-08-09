@@ -454,6 +454,5 @@ class MetriqClient:
         Returns:
             Environment: Created environment.
         """
-        response = self.http.post("/task/", data=environment)
-        print(response["message"])
+        response = self.http.post("/platform/", data=environment)
         return Environment(**response["data"])
