@@ -1,3 +1,4 @@
+from msilib.schema import Environment
 from urllib import parse
 from typing import Dict, List, Optional
 
@@ -19,6 +20,7 @@ from metriq.models import (
     MethodCreateRequest,
     MethodUpdateRequest,
     Result,
+    Environment,
 )
 
 
@@ -440,5 +442,18 @@ class MetriqClient:
         print(response["message"])
         return [
             Method(**r)
+            for r in response["data"]
+        ]
+
+    @handler
+    def platform_get(self) -> List[Environment]:
+        """Return a List of Environment objects.
+
+        Returns:
+            List: List of Environment objects.
+        """
+        response = self.http.get(f"/platform/")
+        return [
+            Environment(**r)
             for r in response["data"]
         ]
