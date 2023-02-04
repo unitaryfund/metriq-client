@@ -1,6 +1,4 @@
-from msilib.schema import Environment
-from urllib import parse
-from typing import Dict, List, Optional
+from typing import List
 
 
 from tea_client.http import HttpClient
@@ -16,11 +14,12 @@ from metriq.models import (
     TaskCreateRequest,
     TaskUpdateRequest,
     Method,
-    Methods,
     MethodCreateRequest,
     MethodUpdateRequest,
     Result,
-    Environment,
+    Platform,
+    PlatformCreateRequest,
+    PlatformUpdateRequest,
 )
 
 
@@ -446,40 +445,40 @@ class MetriqClient:
         ]
 
     @handler
-    def platform_update(self, environment_id: str, environment: EnvironmentUpdateRequest) -> Environment:
-        """Update an Environment.
+    def platform_update(self, platform_id: str, platform: PlatformUpdateRequest) -> Platform:
+        """Update an Platform.
 
         Args:
-            environment_id (str): ID of the environment.
-            environment (environmentUpdateRequest): environment update request.
+            platform_id (str): ID of the platform.
+            platform (platformUpdateRequest): platform update request.
 
         Returns:
-            Environment: Updated environment.
+            Platform: Updated platform.
         """
-        return Environment(**self.http.patch(f"/platform/{environment_id}/", data=environment))
+        return Platform(**self.http.patch(f"/platform/{platform_id}/", data=platform))
 
     @handler
-    def platform_add(self, environment: EnvironmentCreateRequest) -> Environment:
-        """Add an environment.
+    def platform_add(self, platform: PlatformCreateRequest) -> Platform:
+        """Add an platform.
 
         Args:
-            environment (EnvironmentCreateRequest): Environment create request.
+            platform (PlatformCreateRequest): Platform create request.
 
         Returns:
-            Environment: Created environment.
+            Platform: Created platform.
         """
-        response = self.http.post("/platform/", data=environment)
-        return Environment(**response["data"])
+        response = self.http.post("/platform/", data=platform)
+        return Platform(**response["data"])
 
     @handler
-    def platform_get(self) -> List[Environment]:
-        """Return a List of Environment objects.
+    def platform_get(self) -> List[Platform]:
+        """Return a List of Platform objects.
 
         Returns:
-            List: List of Environment objects.
+            List: List of Platform objects.
         """
         response = self.http.get(f"/platform/")
         return [
-            Environment(**r)
+            Platform(**r)
             for r in response["data"]
         ]
