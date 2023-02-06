@@ -13,9 +13,18 @@ __all__ = [
     "Methods",
     "MethodCreateRequest",
     "MethodUpdateRequest",
+    "Platform",
+    "PlatformCreateRequest",
+    "PlatformUpdateRequest",
     "Result",
     "ModerationReport"
 ]
+
+from metriq.models.platform import (
+    Platform,
+    PlatformCreateRequest,
+    PlatformUpdateRequest,
+)
 
 from metriq.models.submission import (
     Submission,
