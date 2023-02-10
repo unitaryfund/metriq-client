@@ -17,6 +17,7 @@ __all__ = [
     "PlatformCreateRequest",
     "PlatformUpdateRequest",
     "Result",
+    "ResultCreateRequest",
     "ModerationReport"
 ]
 
@@ -36,6 +37,7 @@ from metriq.models.tag import (
 )
 from metriq.models.result import (
     Result,
+    ResultCreateRequest,
 )
 from metriq.models.page import Page
 from metriq.models.task import (

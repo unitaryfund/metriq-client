@@ -21,13 +21,13 @@ class Method(TeaClientModel):
         updatedAt (str): Method update date.
     """
 
-    id: str
-    name: str
-    fullName: str
-    description: str
-    createdAt: str
-    updatedAt: str
-    userId: str
+    id: Optional[str]
+    name: Optional[str]
+    fullName: Optional[str]
+    description: Optional[str]
+    createdAt: Optional[str]
+    updatedAt: Optional[str]
+    userId: Optional[str]
 
 class MethodUpdateRequest(TeaClientModel):
     """MethodUpdateRequest object.

@@ -3,7 +3,7 @@ from typing import Optional, List
 
 
 class Result(TeaClientModel):
-    """Submission object.
+    """Result object.
 
     Attributes:
         id (str): Result ID for database.
@@ -21,12 +21,9 @@ class Result(TeaClientModel):
     class Config:
         fields = {'id': '_id'}
 
-    id: str
     userId: Optional[str]
-    submissionId: Optional[str]
-    taskId: Optional[str]
-    methodId: Optional[str]
-    isHigherBetter: Optional[str]
+    task: Optional[str]
+    method: Optional[str]
     metricName: Optional[str]
     metricValue: Optional[str]
     evaluatedAt: Optional[str]
@@ -41,9 +38,15 @@ class ResultCreateRequest(TeaClientModel):
     """ResultCreateRequest object.
 
     Attributes:
-        submissionName (str): Submission name.
+        X
     """
-
-    submissionName: Optional[str]
-    submissionThumbnailUrl: Optional[str]
-    description: Optional[str]
+    task: Optional[str]
+    method: Optional[str]
+    platform: Optional[str]
+    isHigherBetter: Optional[str]
+    metricName: Optional[str]
+    metricValue: Optional[str]
+    evaluatedAt: Optional[str]
+    qubitCount: Optional[str]
+    circuitDepth: Optional[str]
+    notes: Optional[str]
