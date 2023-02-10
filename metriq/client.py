@@ -1,6 +1,5 @@
 from typing import List
 
-
 from tea_client.http import HttpClient
 from tea_client.handler import handler
 
@@ -17,6 +16,7 @@ from metriq.models import (
     MethodCreateRequest,
     MethodUpdateRequest,
     Result,
+    ResultCreateRequest,
     Platform,
     PlatformCreateRequest,
     PlatformUpdateRequest,
@@ -360,15 +360,6 @@ class MetriqClient:
         ]
 
     @handler
-    def result_metric_names(self) -> List[Result]:
-        response = self.http.get(f"/result/metricNames/")
-        print(response["message"])
-        return [
-            Result(**r)
-            for r in response["data"]
-        ]
-
-    @handler
     def method_add(self, method: MethodCreateRequest) -> Method:
         """Add a method.
 
@@ -405,7 +396,7 @@ class MetriqClient:
         return Method(**self.http.patch(f"/method/{method_id}/", data=method))
 
     @handler
-    def method_get(self, method_id) -> Method:
+    def method_get(self, method_id: str) -> Method:
         """Return a method by it's ID.
 
         Args:
@@ -482,3 +473,38 @@ class MetriqClient:
             Platform(**r)
             for r in response["data"]
         ]
+
+    @handler
+    def result_metric_names(self) -> List[Result]:
+        response = self.http.get(f"/result/metricNames/")
+        print(response["message"])
+        return [
+            Result(**r)
+            for r in response["data"]
+        ]
+
+    @handler
+    def result_get(self, result_id: str) -> Method:
+        """Return a result by it's ID.
+
+        Args:
+            result_id (str): ID of the result.
+
+        Returns:
+            Method: Method object.
+        """
+        return Result(**(self.http.get(f"/result/{result_id}/")['data']))
+
+    @handler
+    def result_add(self, result: ResultCreateRequest, submission_id: str) -> Result:
+        """Add a result to a submission.
+
+        Args:
+            result (ResultCreateRequest): Result create request.
+
+        Returns:
+            Result: Created result.
+        """
+        response = self.http.post(f"/submission/{submission_id}/result", data=result)
+        print(response["message"])
+        return Result(**response["data"])
