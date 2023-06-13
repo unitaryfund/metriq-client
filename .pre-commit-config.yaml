@@ -40,3 +40,12 @@
       entry: pydocstyle
       args:
         - paperswithcode
+
+- repo: local
+  hooks:
+    - id: e2e-tests
+      name: E2E tests
+      entry: pip install -r requirements.txt; pip install .; cd examples; for f in *.py; do python3 "$f"; done 
+      language: system
+      types: [python]
+      pass_filenames: false
