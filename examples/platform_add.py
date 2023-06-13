@@ -8,5 +8,6 @@ environment.name = "Test Submission (Client)"
 environment.fullName = "Test Submission Full Name (Client)"
 environment.description = "This is the first submission to be successfully uploaded with the Python client."
 
-client = MetriqClient(token="[Get this token from your web app account, and replace this string with it.]")
-print(client.platform_add(environment))
+client = MetriqClient(token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OTgsInJvbGUiOiJjbGllbnQiLCJpYXQiOjE2ODY1NzYzODl9._4CZoykTkKv_OPSWU4jNBgFhJjFH5aVOp0LubuFVA6Y")
+result = client.platform_add(environment)
+assert result is not None

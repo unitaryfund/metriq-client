@@ -41,9 +41,10 @@ result4.evaluatedAt = "2021-07-25"
 result4.isHigherBetter = "true"
 result4.qubitCount = "4"
 
-client = MetriqClient(token="[Get this token from your web app account, and replace this string with it.]")
+client = MetriqClient(token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OTksInJvbGUiOiJjbGllbnQiLCJpYXQiOjE2ODY2NjQxODd9.VWT8b4peYwebm9-Ul4-6xkMMajATIiqUXO_dE4lxigk")
 client.result_add(result1)
 client.result_add(result2)
 client.result_add(result3)
 client.result_add(result4)
-print(client.result_metric_names())
+result = client.result_metric_names()
+assert result is not None
