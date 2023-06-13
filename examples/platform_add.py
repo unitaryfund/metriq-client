@@ -1,8 +1,7 @@
-from msilib.schema import Environment
 from metriq import MetriqClient
-from metriq.models.platform import EnvironmentCreateRequest
+from metriq.models.platform import PlatformCreateRequest
 
-environment = EnvironmentCreateRequest()
+environment = PlatformCreateRequest()
 environment.userId = "60f06be9f320801f0d2380d4"
 environment.name = "Test Submission (Client)"
 environment.fullName = "Test Submission Full Name (Client)"
