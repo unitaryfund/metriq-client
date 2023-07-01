@@ -46,7 +46,7 @@ from metriq.models import (
 class MetriqClient:
     """Metriq client."""
 
-    def __init__(self, token=None, url=None):
+    def __init__(self, token=None, url="https://metriq.info"):
         url = url or config.server_url
         self.http = HttpClient(
             url=f"{url}/api/",

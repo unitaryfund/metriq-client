@@ -21,7 +21,7 @@ class Config(TeaConsoleConfig, TeaClientConfig):
             Path("~").expanduser() / ".metriq"
         ).absolute()
         TeaClientConfig.__init__(
-            self, server_url="http://localhost:8080", api_version=1
+            self, server_url="https://metriq.info", api_version=1
         )
         TeaConsoleConfig.__init__(
             self, config_file=self.config_dir / "metriq.ini"
