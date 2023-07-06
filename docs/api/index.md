@@ -1,4 +1,4 @@
-# PapersWithCode Client api documentation
+# Metriq Client api documentation
 
 ```eval_rst
 .. toctree::

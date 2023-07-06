@@ -1,8 +1,8 @@
 ```eval_rst
-PapersWithCode Client Class
+Metriq Client Class
 ===========================
 
-.. automodule:: paperswithcode.client
+.. automodule:: metriq.client
     :members:
     :no-undoc-members:
 ```

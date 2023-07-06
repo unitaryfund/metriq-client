@@ -8,26 +8,38 @@ class Submission(TeaClientModel):
     Attributes:
         id (str): Submission ID for database.
         userId (str): ID of user responsible for upload.
-        submissionName (str): Submission name.
-        submissionNameNormal (str): Submission name (normalized).
-        submissionThumbnailUrl (str): URL for submission image thumbnail.
-        submittedDate (str): Date of submission.
-        upvotes (list): List of userIds of upvoters.
-        tags (list): List of tags.
-        deletedDate (str): Date of submission.
+        name (str): Submission name.
+        nameNormal (str): Submission name (normalized).
+        description (str): Description of submission.
+        contentUrl (str): URL for submission.
+        thumbnailUrl (str): URL for submission image thumbnail.
+        supplementalURL (str): URL for supplemental content for submission.
+        approvedDate (str): Date of approval of submission.
+        publishedAt (str): Date of publication of submission.
+        tags (list): List of tags of submission.
+        tasks (list): List of tasks of submission.
+        results (list): List of results of submission.
+        methods (list): List of methods of submission.
     """
 
     class Config:
         fields = {'id': '_id'}
 
-    id: str
+    id: Optional[str]
     userId: Optional[str]
-    submissionName: Optional[str]
-    submissionNameNormal: Optional[str]
-    submissionThumbnailUrl: Optional[str]
-    submittedDate: Optional[str]
+    name: Optional[str]
+    nameNormal: Optional[str]
     description: Optional[str]
-    upvotes: List[str]
+    contentUrl: Optional[str]
+    thumbnailUrl: Optional[str]
+    codeUrl: Optional[str]
+    supplementalUrl: Optional[str]
+    approvedAt: Optional[str]
+    publishedAt: Optional[str] 
+    tags: Optional[List]
+    tasks: Optional[List]
+    results: Optional[List]
+    methods: Optional[List]
 
 
 class SubmissionCreateRequest(TeaClientModel):
@@ -35,8 +47,24 @@ class SubmissionCreateRequest(TeaClientModel):
 
     Attributes:
         submissionName (str): Submission name.
+        submissionThumbnailUrl (str): URL for submission image thumbnail.
+        description (str): Description of submission.
     """
 
-    submissionName: Optional[str]
-    submissionThumbnailUrl: Optional[str]
+    name: Optional[str]
+    contentUrl: Optional[str]
+    thumbnailUrl: Optional[str]
+    description: Optional[str]
+
+
+class SubmissionUpdateRequest(TeaClientModel):
+    """SubmissionUpdateRequest object.
+
+    Attributes:
+        submissionName (str): Submission name.
+        submissionThumbnailUrl (str): URL for submission image thumbnail.
+        description (str): Description of submission.
+    """
+
+    name: Optional[str]
     description: Optional[str]
