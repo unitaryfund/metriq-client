@@ -20,7 +20,7 @@ class Task(TeaClientModel):
     class Config:
         fields = {'id': '_id'}
 
-    id: str
+    id: Optional[str]
     userId: Optional[str]
     name: Optional[str]
     fullName: Optional[str]
