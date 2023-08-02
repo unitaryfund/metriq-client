@@ -35,7 +35,7 @@ class MetriqClient:
         )
 
     @handler
-    def hello(self):
+    def metriq_hello(self):
         print(self.http.url)
         return self.http.get("/")
 
@@ -149,7 +149,7 @@ class MetriqClient:
         return Submission(**response["data"])
 
     @handler
-    def submission_trending_list(self, page: int = 0) -> List[Submission]:
+    def submission_get_by_trending(self, page: int = 0) -> List[Submission]:
         """Return a list of trending submissions.
 
         Args:
@@ -166,7 +166,7 @@ class MetriqClient:
         ]
 
     @handler
-    def submission_popular_list(self, page: int = 0) -> List[Submission]:
+    def submission_get_by_popular(self, page: int = 0) -> List[Submission]:
         """Return a list of popular submissions.
 
         Args:
@@ -183,7 +183,7 @@ class MetriqClient:
         ]
 
     @handler
-    def submission_latest_list(self, page: int = 0) -> List[Submission]:
+    def submission_get_by_latest(self, page: int = 0) -> List[Submission]:
         """Return a list of latest submissions.
 
         Args:
@@ -200,7 +200,7 @@ class MetriqClient:
         ]
 
     @handler
-    def submission_trending_by_tag_list(self, tag: str, page: int = 0) -> List[Submission]:
+    def submission_get_by_trending_tag(self, tag: str, page: int = 0) -> List[Submission]:
         """Return a list of trending submissions by tag.
 
         Args:
@@ -218,7 +218,7 @@ class MetriqClient:
         ]
 
     @handler
-    def submission_popular_by_tag_list(self, tag: str, page: int = 0) -> List[Submission]:
+    def submission_get_by_popular_tag(self, tag: str, page: int = 0) -> List[Submission]:
         """Return a list of popular submissions by tag.
 
         Args:
@@ -236,7 +236,7 @@ class MetriqClient:
         ]
 
     @handler
-    def submission_latest_by_tag_list(self, tag: str, page: int = 0) -> List[Submission]:
+    def submission_get_by_latest_tag(self, tag: str, page: int = 0) -> List[Submission]:
         """Return a list of latest submissions by tag.
 
         Args:
@@ -332,7 +332,7 @@ class MetriqClient:
         return Task(**response["data"])
 
     @handler
-    def task_submission_count_get(self) -> List[Task]:
+    def task_get_submission_count(self) -> List[Task]:
         """Return a list of submission counts per Task.
 
         Returns:
@@ -346,7 +346,7 @@ class MetriqClient:
         ]
 
     @handler
-    def task_names_get(self) -> List[Task]:
+    def task_get_names(self) -> List[Task]:
         """Return a list of Task names.
 
         Returns:
@@ -408,7 +408,7 @@ class MetriqClient:
         return Method(**(self.http.get(f"/method/{method_id}/")['data']))
 
     @handler
-    def method_submission_count_get(self) -> List[Method]:
+    def method_get_submission_count(self) -> List[Method]:
         """Return method submission count.
 
         Returns:
@@ -422,7 +422,7 @@ class MetriqClient:
         ]
 
     @handler
-    def method_names_get(self) -> List[Method]:
+    def method_get_names(self) -> List[Method]:
         """Return method names.
 
         Returns:
