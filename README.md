@@ -26,7 +26,9 @@ following example script from `metriq-client/examples/metriq_hello.py`:
 ```python
 from metriq import MetriqClient
 
-client = MetriqClient(token="[Get this token from your web app account, and replace this string with it.]")
+#in your CLI, run the command: export METRIQ_CLIENT_API_KEY=<the key you get from the website>
+#and this will import it for all examples on your local directory
+client = MetriqClient(token=os.environ["METRIQ_CLIENT_API_KEY"])
 print(client.hello())
 >>> {'status': 'API is working', 'message': 'This is the Metriq public REST API.'}
 ```
