@@ -8,6 +8,6 @@ method.name = "Test Method name Updated (Client)"
 method.fullName = "Test Method fullName Updated (Client)"
 method.description = "Test Method description Updated (Client)"
 
-client = MetriqClient(token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OTgsInJvbGUiOiJjbGllbnQiLCJpYXQiOjE2ODY1NzYzODl9._4CZoykTkKv_OPSWU4jNBgFhJjFH5aVOp0LubuFVA6Y")
+client = MetriqClient(token=os.environ["METRIQ_CLIENT_API_KEY"])
 result = client.method_update(method_id, method)
 assert result is not None
