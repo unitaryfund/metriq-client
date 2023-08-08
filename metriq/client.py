@@ -481,7 +481,7 @@ class MetriqClient:
         Returns:
             List: List of Platform objects.
         """
-        response = self.http.get(f"/platform/names/")
+        response = self.http.get("/platform/names")
         print(response["message"])
         return [
             Platform(**r)
