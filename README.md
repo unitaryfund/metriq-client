@@ -27,7 +27,7 @@ following example script from `metriq-client/examples/metriq_hello.py`:
 from metriq import MetriqClient
 
 #in your CLI, run the command: export METRIQ_CLIENT_API_KEY=<the key you get from the website>
-#and this will import it for all examples on your local directory
+#On a UNIX or LINUX system, you can put this inside a .bashrc or .env. For windows, put it into your enviornment variables
 client = MetriqClient(token=os.environ["METRIQ_CLIENT_API_KEY"])
 print(client.hello())
 >>> {'status': 'API is working', 'message': 'This is the Metriq public REST API.'}
