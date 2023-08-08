@@ -26,7 +26,11 @@ following example script from `metriq-client/examples/metriq_hello.py`:
 ```python
 from metriq import MetriqClient
 
-#in your CLI, run the command: export METRIQ_CLIENT_API_KEY=<the key you get from the website>
+You will need to create an environment variable `` to store the Metriq API key. On Linux/Unix operating systems, you can run
+
+export METRIQ_CLIENT_API_KEY=<the key you get from the website>
+
+in your terminal. On Windows, you can similarly add this variable as an environment variable. 
 #On a UNIX or LINUX system, you can put this inside a .bashrc or .env. For windows, put it into your enviornment variables
 client = MetriqClient(token=os.environ["METRIQ_CLIENT_API_KEY"])
 print(client.hello())
