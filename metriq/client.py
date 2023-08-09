@@ -476,7 +476,7 @@ class MetriqClient:
     
     @handler
     def platform_get_names(self)->List[Platform]:
-          """Return platform names.
+        """Return platform names.
 
         Returns:
             List: List of Platform objects.
