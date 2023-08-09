@@ -31,4 +31,30 @@ print(client.hello())
 >>> {'status': 'API is working', 'message': 'This is the Metriq public REST API.'}
 ```
 
-For further examples of usage, consult `metriq-client/examples`.
+## Further usage (DRAFT)
+### Submissions
+Many details of submissions can be managed using the client. For example, the following functionalities can be invoked:
+- Adding a submission or any part of one (method, tag, task, etc.)
+- Deleting a submission
+- Sorting submissions (by latest, popular, or trending_
+- Upvoting a submission
+
+### Tags
+Similarly, with the client, it is possible to (((what are these funcions doing)))
+- tag_get.py
+- tag_get_names.py
+
+### Tasks
+Users can also add or update tasks that exist within Metriq, or (((get functions)))
+- task_add.py
+- task_get.py
+- task_get_names.py
+- task_get_submission_count.py
+- task_update.py
+  
+### Platform
+- platform_add.py
+- platform_get.py
+- platform_update.py
+
+For even more examples of usage, consult `metriq-client/examples`.
