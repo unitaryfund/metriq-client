@@ -268,7 +268,7 @@ class MetriqClient:
         ]
 
     @handler
-    def tag_names_get(self) -> List[Tag]:
+    def tag_get_names(self) -> List[Tag]:
         """Return a List of names of Tag objects.
 
         Returns:
