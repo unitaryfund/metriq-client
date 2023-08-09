@@ -31,30 +31,34 @@ print(client.hello())
 >>> {'status': 'API is working', 'message': 'This is the Metriq public REST API.'}
 ```
 
-## Further usage (DRAFT)
+## Further usage
 ### Submissions
 Many details of submissions can be managed using the client. For example, the following functionalities can be invoked:
-- Adding a submission or any part of one (method, tag, task, etc.)
-- Deleting a submission
-- Sorting submissions (by latest, popular, or trending_
-- Upvoting a submission
+- Adding a submission or any part of one (method, tag, task, etc.) with `submission_add` and related functions.
+- Deleting a submission with `submission_delete`.
+- Sorting submissions (by latest, popular, or trending) with `submission_get_by_*`.
+- Upvoting a submission with `submission_upvote`.
+- Updating a submission with `submission_update`.
+
+### Platforms
+Information on platforms can also be accessed and edited: 
+- Platforms can be added with `platform_add` and updated with `platform_update`.
+- A list of platforms can be invoked using `platform_get`.
+- A list of platforms on sorted by how many submission each has using `platform_get_submission_count`.
 
 ### Tags
-Similarly, with the client, it is possible to (((what are these funcions doing)))
-- tag_get.py
-- tag_get_names.py
+Similarly, with the client, it is possible to get tag information from Metriq. This includes being able to get a list of tag items with `tag_get`, or a list of their names with `tag_get_names`.
 
 ### Tasks
-Users can also add or update tasks that exist within Metriq, or (((get functions)))
-- task_add.py
-- task_get.py
-- task_get_names.py
-- task_get_submission_count.py
-- task_update.py
-  
-### Platform
-- platform_add.py
-- platform_get.py
-- platform_update.py
+The client can also:
+- Add tasks with `task_add`.
+- Update taskswith `task_update`.
+- Get information on tasks with `task_get` and `task_get_*`.
+
+### Methods
+Functions exist for accessing information about methods:
+- Adding a method to Metriq with `method_add`.
+- Returning infomration about methods with `method_get` and `method_get_*`.
+- Updating a method with `method_update`.
 
 For even more examples of usage, consult `metriq-client/examples`.
