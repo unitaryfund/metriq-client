@@ -19,14 +19,19 @@ You will then need to install and activate the virtual environment:
 pipenv install
 pipenv shell
 ```
-
 Once the virtual environment has been activated, to check that the `metriq-client` API is working as expected, run the 
 following example script from `metriq-client/examples/metriq_hello.py`:
+
+You will need to create an environment variable `METRIQ_CLIENT_API_KEY` to store the Metriq API key. On Linux/Unix operating systems, you can run
+```
+export METRIQ_CLIENT_API_KEY=<the key you get from the website>
+```
+in your terminal. On Windows, you can similarly add this variable as an environment variable. Once you have created the environment variable, you can verify that the client works as follows:
 
 ```python
 from metriq import MetriqClient
 
-client = MetriqClient(token="[Get this token from your web app account, and replace this string with it.]")
+client = MetriqClient(token=os.environ["METRIQ_CLIENT_API_KEY"])
 print(client.hello())
 >>> {'status': 'API is working', 'message': 'This is the Metriq public REST API.'}
 ```

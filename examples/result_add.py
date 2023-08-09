@@ -10,6 +10,6 @@ result.evaluatedAt = "2021-07-22"
 result.isHigherBetter = "true"
 result.qubitCount = "2"
 
-client = MetriqClient(token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OTksInJvbGUiOiJjbGllbnQiLCJpYXQiOjE2ODY2NjQxODd9.VWT8b4peYwebm9-Ul4-6xkMMajATIiqUXO_dE4lxigk")
+client = MetriqClient(token=os.environ["METRIQ_CLIENT_API_KEY"])
 result = client.result_add(result)
 assert result is not None
