@@ -6,7 +6,7 @@ It is adapted from the [PapersWithCode client](https://github.com/paperswithcode
 
 The API is completely covered by the client and it wraps all the API models
 into python objects and communicates with the API by getting and passing those
-objects from and to the api client.
+objects from and to the API client.
 
 ## Quick usage example
 
@@ -44,7 +44,7 @@ Many details of submissions can be managed using the client. For example, the fo
 Information on platforms can also be accessed and edited: 
 - Platforms can be added with `platform_add` and updated with `platform_update`.
 - A list of platforms can be invoked using `platform_get`.
-- A list of platforms on sorted by how many submission each has using `platform_get_submission_count`.
+- A list of platforms sorted by how many submissions each has using `platform_get_submission_count`.
 
 ### Tags
 Similarly, with the client, it is possible to get tag information from Metriq. This includes being able to get a list of tag items with `tag_get`, or a list of their names with `tag_get_names`.
@@ -52,7 +52,7 @@ Similarly, with the client, it is possible to get tag information from Metriq. T
 ### Tasks
 The client can also:
 - Add tasks with `task_add`.
-- Update taskswith `task_update`.
+- Update tasks with `task_update`.
 - Get information on tasks with `task_get` and `task_get_*`.
 
 ### Methods
