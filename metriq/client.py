@@ -508,3 +508,18 @@ class MetriqClient:
         response = self.http.post(f"/submission/{submission_id}/result", data=result)
         print(response["message"])
         return Result(**response["data"])
+
+    @handler
+    def platform_get_submission_count(self) -> List[Platform]:
+        """Return a list of submission counts per Platform.
+
+        Returns:
+            List: List of submission counts by Platform object.
+        """
+        response = self.http.get("platform/submissionCount/")
+        print(response["message"])
+        return [
+            Platform(**r)
+            for r in response["data"]
+        ]
+
