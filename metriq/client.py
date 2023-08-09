@@ -360,6 +360,13 @@ class MetriqClient:
         ]
 
     @handler
+    def task_get_network(self) -> Task:
+        
+        response = self.http.get("/task/network")
+        print(response["message"])
+        return Task(**response["data"])
+    
+    @handler
     def method_add(self, method: MethodCreateRequest) -> Method:
         """Add a method.
 
