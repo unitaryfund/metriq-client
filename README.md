@@ -22,7 +22,7 @@ pipenv shell
 Once the virtual environment has been activated, to check that the `metriq-client` API is working as expected, run the 
 following example script from `metriq-client/examples/metriq_hello.py`:
 
-You will need to create an environment variable METRIQ_CLIENT_API_KEY to store the Metriq API key. On Linux/Unix operating systems, you can run
+You will need to create an environment variable `METRIQ_CLIENT_API_KEY` to store the Metriq API key. On Linux/Unix operating systems, you can run
 ```
 export METRIQ_CLIENT_API_KEY=<the key you get from the website>
 ```
