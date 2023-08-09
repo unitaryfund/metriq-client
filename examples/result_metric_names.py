@@ -41,7 +41,7 @@ result4.evaluatedAt = "2021-07-25"
 result4.isHigherBetter = "true"
 result4.qubitCount = "4"
 
-client = MetriqClient(token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OTksInJvbGUiOiJjbGllbnQiLCJpYXQiOjE2ODY2NjQxODd9.VWT8b4peYwebm9-Ul4-6xkMMajATIiqUXO_dE4lxigk")
+client = MetriqClient(token=os.environ["METRIQ_CLIENT_API_KEY"])
 client.result_add(result1)
 client.result_add(result2)
 client.result_add(result3)
