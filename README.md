@@ -30,10 +30,11 @@ in your terminal. On Windows, you can similarly add this variable as an environm
 
 ```python
 from metriq import MetriqClient
+import os
 
-client = MetriqClient(token=os.environ["METRIQ_CLIENT_API_KEY"])
+client = MetriqClient(token=str(os.environ["METRIQ_CLIENT_API_KEY"]))
 print(client.hello())
 >>> {'status': 'API is working', 'message': 'This is the Metriq public REST API.'}
 ```
 
-For further examples of usage, consult `metriq-client/examples`.
+For further examples of usage, consult `metriq-client/examples`. 
