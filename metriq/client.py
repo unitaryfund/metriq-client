@@ -268,7 +268,7 @@ class MetriqClient:
         ]
 
     @handler
-    def tag_names_get(self) -> List[Tag]:
+    def tag_get_names(self) -> List[Tag]:
         """Return a List of names of Tag objects.
 
         Returns:
@@ -473,6 +473,20 @@ class MetriqClient:
             Platform(**r)
             for r in response["data"]
         ]
+    
+    @handler
+    def platform_get_names(self)->List[Platform]:
+        """Return platform names.
+
+        Returns:
+            List: List of Platform objects.
+        """
+        response = self.http.get("/platform/names")
+        print(response["message"])
+        return [
+            Platform(**r)
+            for r in response["data"]
+        ]
 
     @handler
     def platform_get_names(self)->List[Platform]:
@@ -522,3 +536,18 @@ class MetriqClient:
         response = self.http.post(f"/submission/{submission_id}/result", data=result)
         print(response["message"])
         return Result(**response["data"])
+
+    @handler
+    def platform_get_submission_count(self) -> List[Platform]:
+        """Return a list of submission counts per Platform.
+
+        Returns:
+            List: List of submission counts by Platform object.
+        """
+        response = self.http.get("platform/submissionCount/")
+        print(response["message"])
+        return [
+            Platform(**r)
+            for r in response["data"]
+        ]
+
