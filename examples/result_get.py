@@ -1,5 +1,6 @@
 from metriq import MetriqClient
 from metriq.models.result import ResultCreateRequest
+import os
 
 result = ResultCreateRequest()
 result.task = "176"
@@ -10,6 +11,6 @@ result.evaluatedAt = "2021-07-22"
 result.isHigherBetter = "true"
 result.qubitCount = "2"
 
-client = MetriqClient(token=os.environ["METRIQ_CLIENT_API_KEY"])
+client = MetriqClient(token=str(os.environ["METRIQ_CLIENT_API_KEY"]))
 result = client.result_add(result)
 assert result is not None
