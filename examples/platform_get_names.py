@@ -1,5 +1,6 @@
 from metriq import MetriqClient
+import os
 
-client = MetriqClient(token=os.environ["METRIQ_CLIENT_API_KEY"])
+client = MetriqClient(token=str(os.environ["METRIQ_CLIENT_API_KEY"]))
 result = client.platform_get_names()
 assert result is not None

@@ -1,5 +1,6 @@
 from metriq import MetriqClient
 from metriq.models.result import ResultCreateRequest
+import os
 
 # Result Item 1
 result1 = ResultCreateRequest()
@@ -41,7 +42,7 @@ result4.evaluatedAt = "2021-07-25"
 result4.isHigherBetter = "true"
 result4.qubitCount = "4"
 
-client = MetriqClient(token=os.environ["METRIQ_CLIENT_API_KEY"])
+client = MetriqClient(token=str(os.environ["METRIQ_CLIENT_API_KEY"]))
 client.result_add(result1)
 client.result_add(result2)
 client.result_add(result3)
