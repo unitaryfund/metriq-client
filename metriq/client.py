@@ -49,10 +49,8 @@ class MetriqClient:
         Returns:
             Submission: Submission object.
         """
-        response = self.http.get(f"/submission/{submission_id}/")
-        print(response["message"])
-        return Submission(**response["data"])
-
+        return Submission(**(self.http.get(f"/submission/{submission_id}/")['data']))
+        
     @handler
     def submission_delete(self, submission_id: str):
         """Delete a submission.
@@ -74,7 +72,8 @@ class MetriqClient:
         """
         response = self.http.post("/submission/", data=submission)
         print(response["message"])
-        return Submission(**response["data"])
+
+        #return Submission(**response["data"])
 
     @handler
     def submission_add_method(self, submission_id: str, method_id: str) -> Submission:
@@ -462,17 +461,20 @@ class MetriqClient:
         return Platform(**response["data"])
 
     @handler
-    def platform_get(self) -> List[Platform]:
+    def platform_get(self, platform_id: str) -> List[Platform]:
         """Return a List of Platform objects.
 
         Returns:
             List: List of Platform objects.
         """
-        response = self.http.get(f"/platform/")
-        return [
-            Platform(**r)
-            for r in response["data"]
-        ]
+        response = self.http.get(f"/platform/{platform_id}")
+        print(response["message"])
+        return Platform(**(self.http.get(f"/method/{platform_id}/")['data']))
+        return Platform(**response["data"])
+#        return [
+#            Platform(**r)
+#            for r in response["data"]
+#        ]
     
     @handler
     def platform_get_names(self)->List[Platform]:
@@ -521,7 +523,9 @@ class MetriqClient:
         Returns:
             Method: Method object.
         """
-        return Result(**(self.http.get(f"/result/{result_id}/")['data']))
+        response = self.http.get(f"/result/{result_id}/")
+        print(response["message"])
+        #return Result(**(self.http.get(f"/result/{result_id}/")['data']))
 
     @handler
     def result_add(self, result: ResultCreateRequest, submission_id: str) -> Result:

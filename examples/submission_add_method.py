@@ -1,5 +1,7 @@
-from metriq import MetriqClient
+"""Add method to submission on Metriq."""
 import os
+from metriq import MetriqClient
+
 
 submission_id = "1234567890"
 method_id = "2345678901"

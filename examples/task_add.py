@@ -1,6 +1,8 @@
+"""Add task on Metriq."""
+import os
 from metriq import MetriqClient
 from metriq.models.task import TaskCreateRequest
-import os
+
 
 task = TaskCreateRequest()
 task.userId = "60f06be9f320801f0d2380d4"

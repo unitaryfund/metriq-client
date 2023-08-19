@@ -1,6 +1,8 @@
+"""Update method on Metriq."""
+import os
 from metriq import MetriqClient
 from metriq.models.method import MethodUpdateRequest
-import os
+
 
 method = MethodUpdateRequest()
 method_id = "6101c6ac1134861ba8fbdd9e"

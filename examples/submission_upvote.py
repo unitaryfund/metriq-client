@@ -1,8 +1,9 @@
-from metriq import MetriqClient
+"""Upvote submission by ID on Metriq."""
 import os
+from metriq import MetriqClient
+
 
 client = MetriqClient(token=str(os.environ["METRIQ_CLIENT_API_KEY"]))
-# Give a submission ID, as the string below.
 result = client.submission_upvote("6116cc3b8d4c8079d6b4f618")
 assert result is not None
 

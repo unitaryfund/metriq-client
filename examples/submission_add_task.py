@@ -1,5 +1,7 @@
-from metriq import MetriqClient
+"""Add task to submission on Metriq."""
 import os
+from metriq import MetriqClient
+
 
 submission_id = "1234567890"
 task_id = "2345678901"

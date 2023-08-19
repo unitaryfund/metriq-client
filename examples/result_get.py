@@ -1,16 +1,8 @@
-from metriq import MetriqClient
-from metriq.models.result import ResultCreateRequest
+"""Get result from Metriq."""
 import os
+from metriq import MetriqClient
 
-result = ResultCreateRequest()
-result.task = "176"
-result.method = "84"
-result.metricName = "Test Metric"
-result.metricValue = "10"
-result.evaluatedAt = "2021-07-22"
-result.isHigherBetter = "true"
-result.qubitCount = "2"
 
 client = MetriqClient(token=str(os.environ["METRIQ_CLIENT_API_KEY"]))
-result = client.result_add(result)
+result = client.result_get("6101c6ac1134861ba8fbdd9e")
 assert result is not None

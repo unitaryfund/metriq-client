@@ -52,7 +52,7 @@ from metriq.models.method import (
     MethodCreateRequest,
     MethodUpdateRequest,
 )
-from metriq.models.moderationReport import (
+from metriq.models.moderation_report import (
     ModerationReport,
     ModerationReportCreateRequest,
     ModerationReports
