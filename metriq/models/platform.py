@@ -65,7 +65,7 @@ class PlatformUpdateRequest(TeaClientModel):
     parentPlatform: Optional[str] = None
 
 
-class Platform(Page):
+class Platforms(Page):
     """Object representing a paginated page of Platform.
 
     Attributes:

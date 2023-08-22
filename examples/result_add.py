@@ -1,6 +1,8 @@
+"""Add result to Metriq."""
+import os
 from metriq import MetriqClient
 from metriq.models.result import ResultCreateRequest
-import os
+
 
 result = ResultCreateRequest()
 result.task = "176"

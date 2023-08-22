@@ -1,5 +1,6 @@
 from tea_client.models import TeaClientModel
-from typing import Optional, List
+from typing import Any, Optional, List
+from metriq.models.page import Page
 
 
 class Submission(TeaClientModel):
@@ -36,10 +37,10 @@ class Submission(TeaClientModel):
     supplementalUrl: Optional[str]
     approvedAt: Optional[str]
     publishedAt: Optional[str] 
-    tags: Optional[List]
-    tasks: Optional[List]
-    results: Optional[List]
-    methods: Optional[List]
+    tags: Optional[List[Any]]
+    tasks: Optional[List[Any]]
+    results: Optional[List[Any]]
+    methods: Optional[List[Any]]
 
 
 class SubmissionCreateRequest(TeaClientModel):
@@ -54,7 +55,7 @@ class SubmissionCreateRequest(TeaClientModel):
     name: Optional[str]
     contentUrl: Optional[str]
     thumbnailUrl: Optional[str]
-    description: Optional[str]
+    description: Optional[str] = ""
 
 
 class SubmissionUpdateRequest(TeaClientModel):
@@ -68,3 +69,15 @@ class SubmissionUpdateRequest(TeaClientModel):
 
     name: Optional[str]
     description: Optional[str]
+
+class Submissions(Page):
+    """Object representing a paginated page of submissions.
+
+    Attributes:
+        count (int): Number of elements matching the query.
+        next_page (int, optional): Number of the next page.
+        previous_page (int, optional): Number of the previous page.
+        results (List[Task]): List of tasks on this page.
+    """
+
+    results: List[Submission]

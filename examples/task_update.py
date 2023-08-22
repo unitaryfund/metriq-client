@@ -1,6 +1,7 @@
+"""Update task by ID on Metriq."""
+import os
 from metriq import MetriqClient
 from metriq.models.task import TaskUpdateRequest
-import os
 
 
 task = TaskUpdateRequest()

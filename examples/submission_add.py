@@ -1,6 +1,8 @@
+"""Add submission to Metriq."""
+import os
 from metriq import MetriqClient
 from metriq.models.submission import SubmissionCreateRequest
-import os
+
 
 submission = SubmissionCreateRequest()
 submission.name = "Test Submission (Client)"
