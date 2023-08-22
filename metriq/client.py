@@ -72,8 +72,7 @@ class MetriqClient:
         """
         response = self.http.post("/submission/", data=submission)
         print(response["message"])
-
-        #return Submission(**response["data"])
+        return Submission(**response["data"])
 
     @handler
     def submission_add_method(self, submission_id: str, method_id: str) -> Submission:
