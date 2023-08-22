@@ -469,12 +469,7 @@ class MetriqClient:
         """
         response = self.http.get(f"/platform/{platform_id}")
         print(response["message"])
-        return Platform(**(self.http.get(f"/method/{platform_id}/")['data']))
         return Platform(**response["data"])
-#        return [
-#            Platform(**r)
-#            for r in response["data"]
-#        ]
     
     @handler
     def platform_get_names(self)->List[Platform]:
