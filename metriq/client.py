@@ -471,7 +471,7 @@ class MetriqClient:
         return Platform(**response["data"])
     
     @handler
-    def platform_get_names(self)->List[Platform]:
+    def platform_get_names(self) -> List[Platform]:
         """Return platform names.
 
         Returns:
@@ -485,11 +485,11 @@ class MetriqClient:
         ]
 
     @handler
-    def platform_get_names(self)->List[Platform]:
+    def platform_get_names(self) -> List[Platform]:
         """Return platform names.
 
         Returns:
-        List: List of platform objects.
+            List: List of platform objects.
         """
         response = self.http.get("/platform/names")
         print(response["message"])
@@ -499,13 +499,15 @@ class MetriqClient:
         ]
 
     @handler
-    def result_metric_names(self) -> List[Result]:
+    def result_metric_names(self) -> List[str]:
+        """Return all result metric names.
+
+        Returns:
+            List: List of strings corresponding to metric names.
+        """
         response = self.http.get(f"/result/metricNames/")
         print(response["message"])
-        return [
-            Result(**r)
-            for r in response["data"]
-        ]
+        return response["data"]
 
     @handler
     def result_get(self, result_id: str) -> Method:
@@ -548,4 +550,3 @@ class MetriqClient:
             Platform(**r)
             for r in response["data"]
         ]
-
