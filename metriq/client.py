@@ -510,20 +510,6 @@ class MetriqClient:
         return response["data"]
 
     @handler
-    def result_get(self, result_id: str) -> Method:
-        """Return a result by it's ID.
-
-        Args:
-            result_id (str): ID of the result.
-
-        Returns:
-            Method: Method object.
-        """
-        response = self.http.get(f"/result/{result_id}/")
-        print(response["message"])
-        #return Result(**(self.http.get(f"/result/{result_id}/")['data']))
-
-    @handler
     def result_add(self, result: ResultCreateRequest, submission_id: str) -> Result:
         """Add a result to a submission.
 
