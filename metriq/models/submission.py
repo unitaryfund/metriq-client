@@ -24,7 +24,7 @@ class Submission(TeaClientModel):
     """
 
     class Config:
-        fields = {'id': '_id'}
+        fields = {"id": "_id"}
 
     id: Optional[str]
     userId: Optional[str]
@@ -49,12 +49,13 @@ class SubmissionCreateRequest(TeaClientModel):
     Attributes:
         submissionName (str): Submission name.
         submissionThumbnailUrl (str): URL for submission image thumbnail.
+        codeUrl (str): URL for submission.
         description (str): Description of submission.
     """
-
     name: Optional[str]
     contentUrl: Optional[str]
     thumbnailUrl: Optional[str]
+    codeUrl: Optional[str]
     description: Optional[str] = ""
 
 
@@ -64,10 +65,11 @@ class SubmissionUpdateRequest(TeaClientModel):
     Attributes:
         submissionName (str): Submission name.
         submissionThumbnailUrl (str): URL for submission image thumbnail.
+        codeUrl (str): URL for submission.
         description (str): Description of submission.
     """
-
     name: Optional[str]
+    codeUrl: Optional[str]
     description: Optional[str]
 
 class Submissions(Page):
