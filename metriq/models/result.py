@@ -1,5 +1,5 @@
 from tea_client.models import TeaClientModel
-from typing import Optional, List
+from typing import Optional
 
 
 class Result(TeaClientModel):
@@ -16,10 +16,12 @@ class Result(TeaClientModel):
         evaluatedDate (str): Date of evaluation.
         submittedDate (str): Date of submission.
         deletedDate (str): Date of submission.
+        sampleSize: (str): Sample size of result.
+        standardError: (str): Standard error for result.
     """
 
     class Config:
-        fields = {'id': '_id'}
+        fields = {"id": "_id"}
 
     userId: Optional[str]
     task: Optional[str]
@@ -32,14 +34,12 @@ class Result(TeaClientModel):
     sampleSize: Optional[str]
     submittedDate: Optional[str]
     deletedDate: Optional[str]
+    sampleSize: Optional[str]
+    standardError: Optional[str]
 
 
 class ResultCreateRequest(TeaClientModel):
-    """ResultCreateRequest object.
-
-    Attributes:
-        X
-    """
+    """ResultCreateRequest object."""
     task: Optional[str]
     method: Optional[str]
     platform: Optional[str]
@@ -50,3 +50,5 @@ class ResultCreateRequest(TeaClientModel):
     qubitCount: Optional[str]
     circuitDepth: Optional[str]
     notes: Optional[str]
+    sampleSize: Optional[str]
+    standardError: Optional[str]
