@@ -17,10 +17,12 @@ class Result(TeaClientModel):
         evaluatedDate (str): Date of evaluation.
         submittedDate (str): Date of submission.
         deletedDate (str): Date of submission.
+        sampleSize: (str): Sample size of result.
+        standardError: (str): Standard error for result.
     """
 
     class Config:
-        fields = {'id': '_id'}
+        fields = {"id": "_id"}
 
     userId: Optional[str]
     task: Optional[str]
@@ -33,6 +35,8 @@ class Result(TeaClientModel):
     sampleSize: Optional[str]
     submittedDate: Optional[str]
     deletedDate: Optional[str]
+    sampleSize: Optional[str]
+    standardError: Optional[str]
 
 
 class ResultCreateRequest(TeaClientModel):
@@ -47,6 +51,8 @@ class ResultCreateRequest(TeaClientModel):
     qubitCount: Optional[str]
     circuitDepth: Optional[str]
     notes: Optional[str]
+    sampleSize: Optional[str]
+    standardError: Optional[str]
 
 
 class Results(Page):
