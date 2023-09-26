@@ -1,5 +1,6 @@
 from tea_client.models import TeaClientModel
 from typing import Optional, List
+from metriq.models.page import Page
 
 
 class Result(TeaClientModel):
@@ -35,11 +36,7 @@ class Result(TeaClientModel):
 
 
 class ResultCreateRequest(TeaClientModel):
-    """ResultCreateRequest object.
-
-    Attributes:
-        X
-    """
+    """ResultCreateRequest object."""
     task: Optional[str]
     method: Optional[str]
     platform: Optional[str]
@@ -50,3 +47,8 @@ class ResultCreateRequest(TeaClientModel):
     qubitCount: Optional[str]
     circuitDepth: Optional[str]
     notes: Optional[str]
+
+
+class Results(Page):
+    """Object representing a paginated page of results."""
+    results: List[Result]
