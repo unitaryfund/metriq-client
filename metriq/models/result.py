@@ -1,5 +1,6 @@
 from tea_client.models import TeaClientModel
-from typing import Optional
+from typing import Optional, List
+from metriq.models.page import Page
 
 
 class Result(TeaClientModel):
@@ -52,3 +53,8 @@ class ResultCreateRequest(TeaClientModel):
     notes: Optional[str]
     sampleSize: Optional[str]
     standardError: Optional[str]
+
+
+class Results(Page):
+    """Object representing a paginated page of results."""
+    results: List[Result]
