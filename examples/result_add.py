@@ -14,5 +14,6 @@ result.isHigherBetter = "true"
 result.qubitCount = "2"
 
 client = MetriqClient(token=str(os.environ["METRIQ_CLIENT_API_KEY"]))
-result = client.result_add(result)
+submission_id = "1234567890"
+result = client.result_add(result, submission_id)
 assert result is not None
