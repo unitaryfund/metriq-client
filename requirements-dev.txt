@@ -1,5 +1,4 @@
--r requirements.txt
-black==19.10b0
+black>=24.3.0
 flake8==3.8.3
 pre-commit==2.6.0
 pydocstyle==5.0.2
