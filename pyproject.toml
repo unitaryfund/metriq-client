@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "metriq-client"
+dynamic = ["version"]
+description = "Python client for metriq API."
+readme = "README.md"
+authors = [
+    { name = "Viktor Kerkez", email = "alefnula@gmail.com" },
+    { name = "UnitaryFund" },
+    { email = "dan@unitary.fund" },
+    { email = "vincent@unitary.fund" }
+]
+maintainers = [
+    { name = "Viktor Kerkez", email = "alefnula@gmail.com" },
+    { name = "UnitaryFund" },
+    { email = "dan@unitary.fund" },
+    { email = "vincent@unitary.fund" }
+]
+urls = { "Homepage" = "https://github.com/unitaryfund/metriq-client" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent"
+]
+requires-python = ">=3.6"
+license = { text = "Apache-2.0" }
+
+[tool.setuptools.packages]
+find = {}
+
+[project.scripts]
+metriq = "metriq.__main__:app"
+
