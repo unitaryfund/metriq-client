@@ -1,23 +1,23 @@
 [build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
 
-[project]
-name = "metriq-client"
-dynamic = ["version"]
+[tool.poetry]
+name = "metriq"
+version = "0.1.2"
 description = "Python client for metriq API."
 readme = "README.md"
 authors = [
-    { name = "Viktor Kerkez", email = "alefnula@gmail.com" },
-    { name = "UnitaryFund" },
-    { email = "dan@unitary.fund" },
-    { email = "vincent@unitary.fund" }
+    "Viktor Kerkez <alefnula@gmail.com>",
+    "UnitaryFund",
+    "Daniel Strano <dan@unitary.fund>",
+    "Vincent Russo <vincent@unitary.fund>"
 ]
 maintainers = [
-    { name = "Viktor Kerkez", email = "alefnula@gmail.com" },
-    { name = "UnitaryFund" },
-    { email = "dan@unitary.fund" },
-    { email = "vincent@unitary.fund" }
+    "Viktor Kerkez <alefnula@gmail.com>",
+    "UnitaryFund",
+    "Daniel Strano <dan@unitary.fund>",
+    "Vincent Russo <vincent@unitary.fund>"
 ]
 urls = { "Homepage" = "https://github.com/unitaryfund/metriq-client" }
 classifiers = [
@@ -25,12 +25,14 @@ classifiers = [
     "License :: OSI Approved :: Apache Software License",
     "Operating System :: OS Independent"
 ]
-requires-python = ">=3.6"
-license = { text = "Apache-2.0" }
+license = "Apache-2.0"
 
-[tool.setuptools.packages]
-find = {}
+[tool.poetry.dependencies]
+python = "^3.6"
+tea-client = "0.0.7"
+tea-console = "0.0.5"
+typer = "0.3.2"
 
-[project.scripts]
+[tool.poetry.scripts]
 metriq = "metriq.__main__:app"
 
