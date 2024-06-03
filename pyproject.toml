@@ -1,0 +1,38 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "metriq"
+version = "0.1.2"
+description = "Python client for metriq API."
+readme = "README.md"
+authors = [
+    "Viktor Kerkez <alefnula@gmail.com>",
+    "UnitaryFund",
+    "Daniel Strano <dan@unitary.fund>",
+    "Vincent Russo <vincent@unitary.fund>"
+]
+maintainers = [
+    "Viktor Kerkez <alefnula@gmail.com>",
+    "UnitaryFund",
+    "Daniel Strano <dan@unitary.fund>",
+    "Vincent Russo <vincent@unitary.fund>"
+]
+urls = { "Homepage" = "https://github.com/unitaryfund/metriq-client" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent"
+]
+license = "Apache-2.0"
+
+[tool.poetry.dependencies]
+python = "^3.6"
+tea-client = "0.0.7"
+tea-console = "0.0.5"
+typer = "0.3.2"
+
+[tool.poetry.scripts]
+metriq = "metriq.__main__:app"
+
