@@ -3,7 +3,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "metriq"
+name = "metriq-client"
 version = "0.1.2"
 description = "Python client for metriq API."
 readme = "README.md"

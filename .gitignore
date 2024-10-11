@@ -1,3 +1,6 @@
+# MacOS
+.DS_Store
+
 # Run artifacts
 test.py
 __pycache__/
