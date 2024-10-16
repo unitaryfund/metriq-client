@@ -2,7 +2,7 @@ from typing import List, Optional
 
 from tea_client.models import TeaClientModel
 
-from metriq.models.page import Page
+from metriq_client.models.page import Page
 
 
 class Task(TeaClientModel):

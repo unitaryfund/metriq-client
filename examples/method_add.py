@@ -1,7 +1,7 @@
 """Add method to Metriq."""
 import os
-from metriq import MetriqClient
-from metriq.models.method import MethodCreateRequest
+from metriq_client import MetriqClient
+from metriq_client.models.method import MethodCreateRequest
 
 
 method = MethodCreateRequest()

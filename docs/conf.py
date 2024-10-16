@@ -17,7 +17,7 @@ from recommonmark.transform import AutoStructify
 # Add project root to pythonpath
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from metriq.version import __version__
+from metriq_client.version import __version__
 
 
 # -- Project information -----------------------------------------------------

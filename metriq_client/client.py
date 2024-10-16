@@ -3,8 +3,8 @@ from typing import List
 from tea_client.http import HttpClient
 from tea_client.handler import handler
 
-from metriq.config import config
-from metriq.models import (
+from metriq_client.config import config
+from metriq_client.models import (
     Submission,
     SubmissionCreateRequest,
     SubmissionUpdateRequest,

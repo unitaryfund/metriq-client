@@ -1,7 +1,7 @@
 """Add result to Metriq."""
 import os
-from metriq import MetriqClient
-from metriq.models.result import ResultCreateRequest
+from metriq_client import MetriqClient
+from metriq_client.models.result import ResultCreateRequest
 
 
 result = ResultCreateRequest()

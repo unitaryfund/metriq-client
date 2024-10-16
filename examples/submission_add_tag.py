@@ -1,6 +1,6 @@
 """Add tag to submission on Metriq."""
 import os
-from metriq import MetriqClient
+from metriq_client import MetriqClient
 
 
 submission_id = "1234567890"

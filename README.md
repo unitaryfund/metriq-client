@@ -30,7 +30,7 @@ in your terminal. On Windows, you can similarly add this variable as an environm
 environment variable, you can verify that the client works as follows:
 
 ```python
-from metriq import MetriqClient
+from metriq_client import MetriqClient
 import os
 
 client = MetriqClient(token=str(os.environ["METRIQ_CLIENT_API_KEY"]))

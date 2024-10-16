@@ -1,6 +1,6 @@
 """Get task by ID on Metriq."""
 import os
-from metriq import MetriqClient
+from metriq_client import MetriqClient
 
 
 client = MetriqClient(token=str(os.environ["METRIQ_CLIENT_API_KEY"]))

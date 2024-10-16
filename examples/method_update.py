@@ -1,7 +1,7 @@
 """Update method on Metriq."""
 import os
-from metriq import MetriqClient
-from metriq.models.method import MethodUpdateRequest
+from metriq_client import MetriqClient
+from metriq_client.models.method import MethodUpdateRequest
 
 
 method = MethodUpdateRequest()

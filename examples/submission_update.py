@@ -1,7 +1,7 @@
 """Update submission on Metriq."""
 import os
-from metriq import MetriqClient
-from metriq.models.submission import SubmissionUpdateRequest
+from metriq_client import MetriqClient
+from metriq_client.models.submission import SubmissionUpdateRequest
 
 
 submission = SubmissionUpdateRequest()

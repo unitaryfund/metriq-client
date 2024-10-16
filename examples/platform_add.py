@@ -1,7 +1,7 @@
 """Add platform to Metriq."""
 import os
-from metriq import MetriqClient
-from metriq.models.platform import PlatformCreateRequest
+from metriq_client import MetriqClient
+from metriq_client.models.platform import PlatformCreateRequest
 
 
 platform = PlatformCreateRequest()

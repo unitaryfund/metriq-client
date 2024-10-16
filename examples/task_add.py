@@ -1,7 +1,7 @@
 """Add task on Metriq."""
 import os
-from metriq import MetriqClient
-from metriq.models.task import TaskCreateRequest
+from metriq_client import MetriqClient
+from metriq_client.models.task import TaskCreateRequest
 
 
 task = TaskCreateRequest()

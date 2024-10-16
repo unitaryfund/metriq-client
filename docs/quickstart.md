@@ -4,7 +4,7 @@ The `metriq-client` is designed to work with python objects. To use the library 
 and instantiate the client and start calling methods on it:
 
 ```python
-from metriq import MetriqClient
+from metriq_client import MetriqClient
 
 client = MetriqClient(token="[Get this token from your web app account, and replace this string with it.]")
 print(client.hello())

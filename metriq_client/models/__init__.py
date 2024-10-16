@@ -21,38 +21,38 @@ __all__ = [
     "ModerationReport"
 ]
 
-from metriq.models.platform import (
+from metriq_client.models.platform import (
     Platform,
     PlatformCreateRequest,
     PlatformUpdateRequest,
 )
 
-from metriq.models.submission import (
+from metriq_client.models.submission import (
     Submission,
     SubmissionCreateRequest,
     SubmissionUpdateRequest,
 )
-from metriq.models.tag import (
+from metriq_client.models.tag import (
     Tag,
 )
-from metriq.models.result import (
+from metriq_client.models.result import (
     Result,
     ResultCreateRequest,
 )
-from metriq.models.page import Page
-from metriq.models.task import (
+from metriq_client.models.page import Page
+from metriq_client.models.task import (
     Task,
     TaskCreateRequest,
     TaskUpdateRequest,
     Tasks,
 )
-from metriq.models.method import (
+from metriq_client.models.method import (
     Method,
     Methods,
     MethodCreateRequest,
     MethodUpdateRequest,
 )
-from metriq.models.moderation_report import (
+from metriq_client.models.moderation_report import (
     ModerationReport,
     ModerationReportCreateRequest,
     ModerationReports

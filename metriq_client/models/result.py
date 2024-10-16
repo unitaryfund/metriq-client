@@ -1,6 +1,6 @@
 from tea_client.models import TeaClientModel
 from typing import Optional, List
-from metriq.models.page import Page
+from metriq_client.models.page import Page
 
 
 class Result(TeaClientModel):
