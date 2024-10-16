@@ -1,85 +1,81 @@
 from tea_client.models import TeaClientModel
-from typing import Any, Optional, List
 from metriq_client.models.page import Page
 
-
 class Submission(TeaClientModel):
-    """Submission object.
+    """Submission object representing a submission in the Metriq system.
 
     Attributes:
-        id (str): Submission ID for database.
-        userId (str): ID of user responsible for upload.
-        name (str): Submission name.
-        nameNormal (str): Submission name (normalized).
-        description (str): Description of submission.
-        contentUrl (str): URL for submission.
-        thumbnailUrl (str): URL for submission image thumbnail.
-        supplementalURL (str): URL for supplemental content for submission.
-        approvedDate (str): Date of approval of submission.
-        publishedAt (str): Date of publication of submission.
-        tags (list): List of tags of submission.
-        tasks (list): List of tasks of submission.
-        results (list): List of results of submission.
-        methods (list): List of methods of submission.
+        id (int | None): Submission ID for the database.
+        userId (str | None): ID of the user responsible for the submission.
+        name (str | None): Name of the submission.
+        nameNormal (str | None): Normalized name of the submission.
+        description (str | None): Description of the submission.
+        contentUrl (str | None): URL for the submission content.
+        thumbnailUrl (str | None): URL for the submission's image thumbnail.
+        codeUrl (str | None): URL for the submission's code.
+        supplementalUrl (str | None): URL for supplemental content for the submission.
+        approvedAt (str | None): Date of submission approval.
+        publishedAt (str | None): Date of submission publication.
+        tags (list | None): List of tags associated with the submission.
+        tasks (list | None): List of tasks associated with the submission.
+        results (list | None): List of results associated with the submission.
+        methods (list | None): List of methods associated with the submission.
     """
 
-    class Config:
-        fields = {"id": "_id"}
-
-    id: Optional[str]
-    userId: Optional[str]
-    name: Optional[str]
-    nameNormal: Optional[str]
-    description: Optional[str]
-    contentUrl: Optional[str]
-    thumbnailUrl: Optional[str]
-    codeUrl: Optional[str]
-    supplementalUrl: Optional[str]
-    approvedAt: Optional[str]
-    publishedAt: Optional[str] 
-    tags: Optional[List[Any]]
-    tasks: Optional[List[Any]]
-    results: Optional[List[Any]]
-    methods: Optional[List[Any]]
+    id: int | None = None
+    userId: str | None = None
+    name: str | None = None
+    nameNormal: str | None = None
+    description: str | None = None
+    contentUrl: str | None = None
+    thumbnailUrl: str | None = None
+    codeUrl: str | None = None
+    supplementalUrl: str | None = None
+    approvedAt: str | None = None
+    publishedAt: str | None = None
+    tags: list | None = None
+    tasks: list | None = None
+    results: list | None = None
+    methods: list | None = None
 
 
 class SubmissionCreateRequest(TeaClientModel):
-    """SubmissionCreateRequest object.
+    """SubmissionCreateRequest object representing a request to create a submission.
 
     Attributes:
-        submissionName (str): Submission name.
-        submissionThumbnailUrl (str): URL for submission image thumbnail.
-        codeUrl (str): URL for submission.
-        description (str): Description of submission.
+        name (str | None): Name of the submission.
+        contentUrl (str | None): URL for the submission content.
+        thumbnailUrl (str | None): URL for the submission's image thumbnail.
+        codeUrl (str | None): URL for the submission's code.
+        description (str | None): Description of the submission.
     """
-    name: Optional[str]
-    contentUrl: Optional[str]
-    thumbnailUrl: Optional[str]
-    codeUrl: Optional[str]
-    description: Optional[str] = ""
+
+    name: str | None = None
+    contentUrl: str | None = None
+    thumbnailUrl: str | None = None
+    codeUrl: str | None = None
+    description: str | None = ""
 
 
 class SubmissionUpdateRequest(TeaClientModel):
-    """SubmissionUpdateRequest object.
+    """SubmissionUpdateRequest object representing a request to update a submission.
 
     Attributes:
-        submissionName (str): Submission name.
-        submissionThumbnailUrl (str): URL for submission image thumbnail.
-        codeUrl (str): URL for submission.
-        description (str): Description of submission.
+        name (str | None): Name of the submission.
+        codeUrl (str | None): URL for the submission's code.
+        description (str | None): Description of the submission.
     """
-    name: Optional[str]
-    codeUrl: Optional[str]
-    description: Optional[str]
+
+    name: str | None = None
+    codeUrl: str | None = None
+    description: str | None = None
+
 
 class Submissions(Page):
     """Object representing a paginated page of submissions.
 
     Attributes:
-        count (int): Number of elements matching the query.
-        next_page (int, optional): Number of the next page.
-        previous_page (int, optional): Number of the previous page.
-        results (List[Task]): List of tasks on this page.
+        results (list[Submission]): List of submissions on this page.
     """
 
-    results: List[Submission]
+    results: list[Submission]

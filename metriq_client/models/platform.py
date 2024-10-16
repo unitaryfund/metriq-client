@@ -1,78 +1,70 @@
-from typing import List, Optional
-
 from tea_client.models import TeaClientModel
-
 from metriq_client.models.page import Page
 
-
 class Platform(TeaClientModel):
-    """Platform object.
+    """Platform object representing a platform in the Metriq system.
 
     Attributes:
         id (str): Platform ID.
-        name (str): Platform name.
-        fullName (str): Full name of Platform.
-        description (str): Platform description.
-        submittedDate (str): Date of Platform submission.
-        deletedDate (str): Date of Platform deletion.
+        userId (str | None): The ID of the user who submitted the platform.
+        name (str | None): Platform name.
+        fullName (str | None): Full name of the platform.
+        description (str | None): Description of the platform.
+        submittedDate (str | None): Date when the platform was submitted.
+        deletedDate (str | None): Date when the platform was deleted, if applicable.
     """
 
-    class Config:
-        fields = {'id': '_id'}
-
-    id: Optional[str]
-    userId: Optional[str]
-    name: Optional[str]
-    fullName: Optional[str]
-    description: Optional[str]
-    submittedDate: Optional[str]
-    deletedDate: Optional[str]
+    id: int  # Required ID
+    userId: str | None = None
+    name: str | None = None
+    fullName: str | None = None
+    description: str | None = None
+    submittedDate: str | None = None
+    deletedDate: str | None = None
 
 
 class PlatformCreateRequest(TeaClientModel):
-    """PlatformCreateRequest object.
-
+    """PlatformCreateRequest object representing a request to create a platform.
 
     Attributes:
-        userId (str): The ID of the user submitting the Platform.
-        name (str): Platform name.
-        fullName (str): Full name of Platform.
-        description (str): Platform description.
-        parentPlatform (str, optional): ID of the parent Platform.
+        userId (str | None): The ID of the user submitting the platform.
+        name (str | None): Platform name.
+        fullName (str | None): Full name of the platform.
+        description (str | None): Description of the platform.
+        parentPlatform (str | None): ID of the parent platform, if applicable.
     """
 
-    userId: Optional[str]
-    name: Optional[str]
-    fullName: Optional[str]
-    description: Optional[str] = ""
-    parentPlatform: Optional[str] = None
+    userId: str | None = None
+    name: str | None = None
+    fullName: str | None = None
+    description: str | None = ""
+    parentPlatform: str | None = None
 
 
 class PlatformUpdateRequest(TeaClientModel):
-    """PlatformUpdateRequest object.
+    """PlatformUpdateRequest object representing a request to update a platform.
 
     Attributes:
-        userId (str): The ID of the user submitting the Platform.
-        name (str): Platform name.
-        fullName (str): Full name of Platform.
-        description (str): Platform description.
-        parentPlatform (str, optional): ID of the parent Platform.
+        name (str | None): Platform name.
+        fullName (str | None): Full name of the platform.
+        description (str | None): Description of the platform.
+        parentPlatform (str | None): ID of the parent platform, if applicable.
     """
 
-    name: Optional[str]
-    fullName: Optional[str]
-    description: Optional[str] = ""
-    parentPlatform: Optional[str] = None
+    name: str | None = None
+    fullName: str | None = None
+    description: str | None = ""
+    parentPlatform: str | None = None
 
 
 class Platforms(Page):
-    """Object representing a paginated page of Platform.
+    """Object representing a paginated page of platforms.
 
     Attributes:
         count (int): Number of elements matching the query.
-        nextPage (int, optional): Number of the next page.
-        previousPage (int, optional): Number of the previous page.
-        results (List[Platform]): List of Platform on this page.
+        nextPage (int | None): Number of the next page, if any.
+        previousPage (int | None): Number of the previous page, if any.
+        results (list[Platform]): List of platforms on this page.
     """
 
-    results: List[Platform]
+    results: list[Platform]
