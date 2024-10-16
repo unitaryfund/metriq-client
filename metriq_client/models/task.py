@@ -1,37 +1,30 @@
-from typing import List, Optional
-
 from tea_client.models import TeaClientModel
-
 from metriq_client.models.page import Page
 
 
 class Task(TeaClientModel):
-    """Task object.
+    """Task object representing a task in the Metriq system.
 
     Attributes:
-        id (str): Task ID.
-        name (str): Task name.
-        fullName (str): Full name of Task.
-        description (str): Task description.
-        submittedDate (str): Date of Task submission.
-        deletedDate (str): Date of Task deletion.
+        id (int): Task ID, typically an integer and required.
+        userId (str | None): The ID of the user who created the task.
+        name (str | None): The name of the task.
+        fullName (str | None): The full name of the task, providing a more detailed description.
+        description (str | None): A brief description of the task.
+        submittedDate (str | None): The date when the task was submitted.
+        deletedDate (str | None): The date when the task was deleted, if applicable.
     """
 
-    class Config:
-        fields = {'id': '_id'}
-
-    id: Optional[str]
-    userId: Optional[str]
-    name: Optional[str]
-    fullName: Optional[str]
-    description: Optional[str]
-    submittedDate: Optional[str]
-    deletedDate: Optional[str]
-
+    id: int  # id is required and should never be None
+    userId: str | None = None
+    name: str | None = None
+    fullName: str | None = None
+    description: str | None = None
+    submittedDate: str | None = None
+    deletedDate: str | None = None
 
 class TaskCreateRequest(TeaClientModel):
     """TaskCreateRequest object.
-
 
     Attributes:
         userId (str): The ID of the user submitting the task.
@@ -41,11 +34,11 @@ class TaskCreateRequest(TeaClientModel):
         parent_task (str, optional): ID of the parent task.
     """
 
-    userId: Optional[str]
-    name: Optional[str]
-    fullName: Optional[str]
-    description: Optional[str] = ""
-    parent_task: Optional[str] = None
+    userId: str | None
+    name: str | None
+    fullName: str | None
+    description: str | None = ""
+    parent_task: str | None = None
 
 
 class TaskUpdateRequest(TeaClientModel):
@@ -59,10 +52,10 @@ class TaskUpdateRequest(TeaClientModel):
         parent_task (str, optional): ID of the parent task.
     """
 
-    name: Optional[str]
-    fullName: Optional[str]
-    description: Optional[str] = ""
-    parent_task: Optional[str] = None
+    name: str | None
+    fullName: str | None
+    description: str | None = ""
+    parent_task: str | None = None
 
 
 class Tasks(Page):
@@ -75,4 +68,4 @@ class Tasks(Page):
         results (List[Task]): List of tasks on this page.
     """
 
-    results: List[Task]
+    results: list[Task]

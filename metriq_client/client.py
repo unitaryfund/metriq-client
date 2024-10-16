@@ -352,6 +352,7 @@ class MetriqClient:
         """
         response = self.http.get(f"/task/names/")
         print(response["message"])
+
         return [
             Task(**r)
             for r in response["data"]
