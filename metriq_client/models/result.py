@@ -29,6 +29,7 @@ class Result(TeaClientModel):
     notes: str | None = None
     sampleSize: str | None = None
     standardError: str | None = None
+    shots: str | None = None
     submittedDate: str | None = None
     deletedDate: str | None = None
 
@@ -62,6 +63,7 @@ class ResultCreateRequest(TeaClientModel):
     notes: str | None = None
     sampleSize: str | None = None
     standardError: str | None = None
+    shots: str | None = None
 
 
 class Results(Page):
