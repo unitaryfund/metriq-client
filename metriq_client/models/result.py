@@ -14,6 +14,7 @@ class Result(TeaClientModel):
         evaluatedAt (str | None): Date when the evaluation was conducted.
         notes (str | None): Additional notes for the result.
         sampleSize (str | None): Sample size of the result.
+        shots (str | None): Shot count of the result.
         standardError (str | None): Standard error for the result.
         submittedDate (str | None): Date when the result was submitted.
         deletedDate (str | None): Date when the result was deleted, if applicable.
@@ -49,6 +50,7 @@ class ResultCreateRequest(TeaClientModel):
         notes (str | None): Additional notes for the result.
         sampleSize (str | None): Sample size of the result.
         standardError (str | None): Standard error for the result.
+        shots (str | None): Shot count of the result.
     """
 
     task: str | None = None
