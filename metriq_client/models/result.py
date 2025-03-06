@@ -21,11 +21,11 @@ class Result(TeaClientModel):
     """
 
     id: int  # Required ID
-    userId: str | None = None
+    userId: int | None = None
     task: str | None = None
     method: str | None = None
     metricName: str | None = None
-    metricValue: str | None = None
+    metricValue: float | None = None
     evaluatedAt: str | None = None
     notes: str | None = None
     sampleSize: str | None = None

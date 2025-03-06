@@ -90,6 +90,21 @@ class MetriqClient:
         return Submission(**response["data"])
 
     @handler
+    def submission_add_platform(self, submission_id: str, platform_id: str) -> Submission:
+        """Add a platform to a submission.
+
+        Args:
+            submission_id: ID of submission
+            platform_id: ID of method
+
+        Returns:
+            Submission: Created submission with method.
+        """
+        response = self.http.post(f"/submission/{submission_id}/platform/{platform_id}", data=None)
+        print(response["message"])
+        return Submission(**response["data"])
+
+    @handler
     def submission_add_task(self, submission_id: str, task_id: str) -> Submission:
         """Add a task to a submission.
 

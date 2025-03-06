@@ -23,7 +23,7 @@ class Submission(TeaClientModel):
     """
 
     id: int | None = None
-    userId: str | None = None
+    userId: int | None = None
     name: str | None = None
     nameNormal: str | None = None
     description: str | None = None
