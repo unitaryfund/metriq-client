@@ -29,9 +29,8 @@ license = "Apache-2.0"
 
 [tool.poetry.dependencies]
 python = "^3.12"
-tea-client = { git = "https://github.com/unitaryfund/tea-client.git", branch = "develop" }
-tea-console = { git = "https://github.com/unitaryfund/tea-console.git", branch = "develop" }
-typer = "^0.12.5"
+tea-client = { git = "https://github.com/WrathfulSpatula/tea-client.git", branch = "develop" }
+tea-console = { git = "https://github.com/WrathfulSpatula/tea-console.git", branch = "develop" }
 
 [tool.poetry.scripts]
 metriq = "metriq.__main__:app"
